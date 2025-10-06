@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gReact Hooks • Next-Gen React Hooks</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="hero" id="top">
+      <nav class="hero__nav">
+        <a class="hero__brand" href="#top">gReact Hooks</a>
+        <div class="hero__links">
+          <a href="#features">Highlights</a>
+          <a href="#docs">Documentation</a>
+          <a
+            class="button button--outline"
+            href="https://www.npmjs.com/package/greact-hooks"
+            target="_blank"
+            rel="noreferrer"
+            >npm</a
+          >
+          <a
+            class="button"
+            href="https://github.com/gregory-artaud/greact-hooks"
+            target="_blank"
+            rel="noreferrer"
+            >GitHub</a
+          >
+        </div>
+        <button class="hero__menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+      <div class="hero__content">
+        <div class="hero__copy">
+          <p class="eyebrow">React 19 Ready</p>
+          <h1>The hook suite that upgrades your state story.</h1>
+          <p class="lead">
+            gReact Hooks keeps everything you love about hooks and layers in
+            modern state ergonomics: immutable snapshots, effortless partial
+            updates, and production-grade utilities.
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="#docs">Explore Hooks</a>
+            <a class="button button--ghost" href="#features">Why gReact</a>
+          </div>
+          <div class="hero__install">
+            <span>Install with your favourite package manager:</span>
+            <code>pnpm add greact-hooks</code>
+          </div>
+        </div>
+        <div class="hero__card" role="region" aria-label="useState2 preview">
+          <div class="hero__card-heading">useState2 in action</div>
+          <pre><code>const [presence, setPresence] = useState2({
+                        status: "offline",
+                        lastSeen: 0,
+                        });
+
+                        useInterval(() => {
+                        fetchPresence().then(setPresence);
+                        }, 3000);
+
+                        setPresence({ status: "online" });
+                    </code></pre>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="features">
+        <div class="section__intro">
+          <h2>Highlights built for teams shipping tomorrow.</h2>
+          <p>
+            Drop in `useState2` and unlock a cleaner state flow immediately.
+            Every hook in the suite is engineered for concurrency-safe React 19
+            apps.
+          </p>
+        </div>
+        <div class="grid grid--features">
+          <article class="feature">
+            <h3>Drop-in upgrade</h3>
+            <p>
+              Swap your imports and keep coding. `useState2` returns the same
+              `[state, setState]` tuple you already know, but plugs in smarter
+              semantics.
+            </p>
+          </article>
+          <article class="feature">
+            <h3>No mutation surprises</h3>
+            <p>
+              Immutable snapshots make accidental mutations a thing of the past.
+              Inspect state confidently in devtools and concurrent renders.
+            </p>
+          </article>
+          <article class="feature">
+            <h3>Partial patches included</h3>
+            <p>
+              Update only what changed. Pass a patch object or a functional
+              updater — we merge the rest so you can stay focused on the UI.
+            </p>
+          </article>
+          <article class="feature">
+            <h3>Tree-shakeable footprint</h3>
+            <p>
+              ES module builds ship with types and zero runtime baggage. Pick
+              the hooks you need and your bundle stays lean.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="split">
+          <div class="split__copy">
+            <h2>State ergonomics without the refactor hangover.</h2>
+            <p>
+              `useState2` introduces partial merging and read-only snapshots
+              while staying fully backwards compatible. It is the evolution of
+              state management you always wanted — designed to thrive in the age
+              of concurrent rendering.
+            </p>
+          </div>
+          <div class="split__card">
+            <h3>Why teams switch</h3>
+            <ul>
+              <li>Safer functional updates with deep context.</li>
+              <li>Painless migration from existing `useState` usage.</li>
+              <li>Battle-tested alongside utilities like `useInterval`.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="docs">
+        <div class="section__intro">
+          <h2>Hook documentation</h2>
+          <p>Everything you need to integrate gReact Hooks today.</p>
+        </div>
+        <div class="docs">
+          <article class="docs__item" id="useState2">
+            <header>
+              <span class="tag">Core</span>
+              <h3>useState2&lt;T&gt;(initialState)</h3>
+            </header>
+            <p>
+              Smart state with immutable reads and ergonomic writes. Works as a
+              drop-in replacement for React's `useState`.
+            </p>
+            <h4>Signature</h4>
+            <pre><code>const [state, setState] = useState2(initialState);
+                            setState(nextValue | patch | updater);
+                        </code></pre>
+            <h4>Key behaviours</h4>
+            <ul>
+              <li>Read-only snapshots guard against accidental mutation.</li>
+              <li>Patch objects merge like class component `setState`.</li>
+              <li>Functional updates receive a fresh snapshot each render.</li>
+            </ul>
+            <h4>Example</h4>
+            <pre><code>const [todo, setTodo] = useState2({ title: "", done: false });
+                            setTodo({ done: true });
+                            setTodo((prev) => ({ ...prev, title: prev.title.trim() }));
+                        </code></pre>
+          </article>
+
+          <article class="docs__item" id="useInterval">
+            <header>
+              <span class="tag">Utility</span>
+              <h3>useInterval(callback, delay)</h3>
+            </header>
+            <p>
+              Run logic on a stable cadence without manual cleanup. Pause by
+              passing `null` for the delay.
+            </p>
+            <h4>Signature</h4>
+            <pre><code>useInterval(callback: () => void, delay: number | null);
+                        </code></pre>
+            <h4>Patterns</h4>
+            <ul>
+              <li>Polling APIs and refreshing dashboards.</li>
+              <li>Scheduling background updates alongside `useState2`.</li>
+              <li>Pausing work by toggling the delay to `null`.</li>
+            </ul>
+            <h4>Example</h4>
+            <pre><code>const [tick, setTick] = useState2(0);
+                            useInterval(() => setTick((n) => n + 1), 1000);
+                        </code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <span>&copy; <span id="year"></span> gReact Hooks contributors.</span>
+        <div class="footer__links">
+          <a href="#top">Back to top</a>
+          <a href="mailto:gregory.rtd+greact-hooks@gmail.com">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
