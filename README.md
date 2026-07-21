@@ -78,6 +78,31 @@ setTodo((prev) => ({ ...prev, title: prev.title.trim() }));
 useInterval(() => setTick((n) => n + 1), 1000);
 ```
 
+### `useDramaticPause(delay?: number): boolean`
+
+Declares a dramatic pause whenever the pointer has stayed still for long enough. It cannot tell whether anyone is actually thinking; it simply promotes every quiet cursor to a suspenseful plot point.
+
+```ts
+function useDramaticPause(delay?: number): boolean;
+```
+
+```tsx
+import { useDramaticPause } from "greact-hooks";
+
+function IndecisiveButton() {
+  const isDramatic = useDramaticPause(1_500);
+
+  return <button>{isDramatic ? "..." : "Make a decision"}</button>;
+}
+```
+
+- **Parameter:** `delay` is the number of milliseconds without a `pointermove` event before the pause becomes dramatic. It defaults to `1000`; negative and non-finite values become `0` for an immediate overreaction.
+- **Returns:** `true` while the current pointer silence has reached that delay, otherwise `false`.
+- **APIs and permissions:** uses `window` `pointermove` events and a timer. It needs no permission and reads no pointer coordinates.
+- **Effects and compatibility:** while mounted, it installs one global pointer listener and timer, both removed on cleanup. It returns `false` during SSR or when the required event-listener APIs are unavailable. Pointer Events are supported by current evergreen browsers.
+
+Use it when a hesitant cursor deserves an unnecessary orchestral swell instead of sensible product design.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |
