@@ -103,6 +103,38 @@ function IndecisiveButton() {
 
 Use it when a hesitant cursor deserves an unnecessary orchestral swell instead of sensible product design.
 
+### `useTabJealousy(options?: UseTabJealousyOptions): string | null`
+
+Lets a browser tab issue a calm, entirely unjustified reproach after the visitor comes back from another tab.
+
+```ts
+interface UseTabJealousyOptions {
+  messages?: readonly string[];
+  document?: Document | null;
+}
+
+function useTabJealousy(options?: UseTabJealousyOptions): string | null;
+```
+
+```tsx
+import { useTabJealousy } from "greact-hooks";
+
+function GuiltyDashboard() {
+  const gossip = useTabJealousy({
+    messages: ["Oh, you are back.", "The DOM says it is not upset."],
+  });
+
+  return <p>{gossip ?? "This tab is pretending to be fine."}</p>;
+}
+```
+
+- **Parameters:** `messages` is the ordered, looping list of reproaches; an empty list keeps the hook quiet. `document` optionally supplies the document to monitor (for example, one from an iframe); it defaults to the current document, and `null` disables monitoring.
+- **Returns:** the next message only after that document goes from `hidden` to `visible`, otherwise `null`.
+- **APIs and permissions:** uses the Document Visibility API (`visibilitychange` and `visibilityState`). It needs no permission, network access, or knowledge of where the visitor went.
+- **Effects and compatibility:** it attaches one document listener while mounted and removes it on cleanup or when the monitored document changes. It returns `null` without a usable document or listener APIs. It works in browsers that support the Document Visibility API and is inert during SSR.
+
+Use it when your interface needs to guilt-trip a multitasker instead of respecting their healthy tab-switching habits.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |
