@@ -22,6 +22,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "check:declarations": "pnpm run build && node scripts/verify-declarations.mjs",
     "test": "vitest run",
     "dev:test": "vitest",
     "prepublishOnly": "pnpm run build && pnpm run test"
