@@ -1,5 +1,4 @@
 // useState2.test.tsx
-import React from "react";
 import { renderHook, act } from "@testing-library/react";
 import { useState2 } from "./use-state-2";
 import { describe, expect, test } from "vitest";

@@ -28,4 +28,4 @@ Run the declaration check and the existing test suite to guard against type-outp
 
 ## Scope
 
-Expected production changes are limited to the DTS plugin configuration and the smallest suitable regression check. No hook implementation, package API expansion, or unrelated TypeScript cleanup is included.
+Expected changes are limited to the DTS plugin configuration, the smallest suitable regression check, and removal of the unused React import reported when the source TypeScript project is loaded. No hook implementation, package API expansion, or other TypeScript cleanup is included.

@@ -59,6 +59,7 @@ git commit --no-gpg-sign -m "test: verify generated declarations"
 
 **Files:**
 - Modify: `vite.config.ts:6`
+- Modify: `src/use-state-2.test.tsx:2`
 
 - [ ] **Step 1: Point vite-plugin-dts at the source TypeScript configuration**
 
@@ -74,27 +75,35 @@ plugins: [
 ],
 ```
 
-- [ ] **Step 2: Run the declaration check to verify it passes**
+- [ ] **Step 2: Remove the unused React import reported by TypeScript**
+
+Remove this line from `src/use-state-2.test.tsx`:
+
+```ts
+import React from "react";
+```
+
+- [ ] **Step 3: Run the declaration check to verify it passes**
 
 Run: `corepack pnpm check:declarations`
 
 Expected: PASS after Vite creates `dist/index.d.ts` and `dist/use-interval.d.ts`.
 
-- [ ] **Step 3: Run the existing test suite**
+- [ ] **Step 4: Run the existing test suite**
 
 Run: `corepack pnpm test`
 
 Expected: 5 test files and 20 tests pass.
 
-- [ ] **Step 4: Inspect the generated declaration entry**
+- [ ] **Step 5: Inspect the generated declaration entry**
 
 Run: `node scripts/verify-declarations.mjs`
 
 Expected: exit code 0 with no output.
 
-- [ ] **Step 5: Commit the production fix**
+- [ ] **Step 6: Commit the production fix**
 
 ```bash
-git add vite.config.ts
+git add vite.config.ts src/use-state-2.test.tsx docs/superpowers/specs/2026-07-21-declaration-generation-design.md docs/superpowers/plans/2026-07-21-declaration-generation.md
 git commit --no-gpg-sign -m "fix: generate library declarations"
 ```
