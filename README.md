@@ -170,6 +170,42 @@ function TypingIncidentReport() {
 
 Use it when “asdfjkl;” deserves a formal incident report instead of a backspace key.
 
+### `useDoomScrollOracle(options?: UseDoomScrollOracleOptions): string | null`
+
+Treats each stretch of scrolling as hard evidence that the page can predict a visitor's future. It cannot; it only counts scroll milestones and becomes increasingly confident anyway.
+
+```ts
+interface UseDoomScrollOracleOptions {
+  distance?: number;
+  messages?: readonly string[];
+  window?: Window | null;
+}
+
+function useDoomScrollOracle(
+  options?: UseDoomScrollOracleOptions,
+): string | null;
+```
+
+```tsx
+import { useDoomScrollOracle } from "greact-hooks";
+
+function EndlessArticle() {
+  const prophecy = useDoomScrollOracle({
+    distance: 800,
+    messages: ["You will discover another paragraph."],
+  });
+
+  return <aside>{prophecy ?? "Your fate is currently above the fold."}</aside>;
+}
+```
+
+- **Parameters:** `distance` is the positive number of pixels between scroll milestones; it defaults to `1000`, and non-finite values use that default while finite values are rounded down with a minimum of `1`. `messages` is the ordered, looping list of prophecies; an empty list keeps the hook quiet. `window` optionally supplies the window to monitor (for example, an iframe's); it defaults to the current window, and `null` disables monitoring.
+- **Returns:** the next configured prophecy after scrolling past a new milestone, otherwise `null`.
+- **APIs and permissions:** uses `window` `scroll` events and `scrollY`. It needs no permission, network access, or actual knowledge of the future.
+- **Effects and compatibility:** it installs one global scroll listener while mounted and removes it on cleanup or when its window or distance changes. A page opened past a milestone starts quietly, and one scroll event produces at most one prophecy even if a programmatic jump crosses several milestones. It is inert during SSR or when the required window listener APIs are unavailable. It works in browsers with standard scrolling events.
+
+Use it when a long page needs a dubious oracle instead of a progress indicator.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |
