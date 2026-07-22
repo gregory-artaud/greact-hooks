@@ -135,6 +135,41 @@ function GuiltyDashboard() {
 
 Use it when your interface needs to guilt-trip a multitasker instead of respecting their healthy tab-switching habits.
 
+### `useKeyMashExcuse(options?: UseKeyMashExcuseOptions): string | null`
+
+Turns a hurried burst of typing into a calm, professionally unserious excuse. Your keyboard may be frantic, but this hook keeps the alibi polished.
+
+```ts
+interface UseKeyMashExcuseOptions {
+  threshold?: number;
+  pause?: number;
+  messages?: readonly string[];
+  document?: Document | null;
+}
+
+function useKeyMashExcuse(options?: UseKeyMashExcuseOptions): string | null;
+```
+
+```tsx
+import { useKeyMashExcuse } from "greact-hooks";
+
+function TypingIncidentReport() {
+  const excuse = useKeyMashExcuse({
+    threshold: 4,
+    messages: ["That was an experimental keyboard solo."],
+  });
+
+  return <p>{excuse ?? "Everything is under control."}</p>;
+}
+```
+
+- **Parameters:** `threshold` is the number of printable, non-repeating key presses required to trigger an excuse; it defaults to `4`, and finite values are rounded down with a minimum of `1`. `pause` is the milliseconds of keyboard silence that forget an unfinished mash; it defaults to `500`, while negative and non-finite values become `0` and `500` respectively. `messages` is the ordered, looping list of excuses; an empty list keeps the hook quiet. `document` optionally supplies the document to monitor and defaults to the current document; `null` disables monitoring.
+- **Returns:** the next configured excuse after a qualifying key mash, otherwise `null`.
+- **APIs and permissions:** uses `keydown` events and a timer. It needs no permission, network access, or knowledge of what the frantic typing actually meant.
+- **Effects and compatibility:** while mounted, it installs one document keyboard listener and may hold one reset timer; both are removed on cleanup or when its document, threshold, or pause changes. It is inert during SSR or when the required document listener APIs are unavailable. It works in browsers with standard keyboard events.
+
+Use it when “asdfjkl;” deserves a formal incident report instead of a backspace key.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |
