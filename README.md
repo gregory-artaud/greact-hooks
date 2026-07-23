@@ -243,6 +243,40 @@ function VeryImportantForm() {
 
 Use it when a form control needs a red-carpet entrance instead of ordinary, respectful focus management.
 
+### `useClipboardSuspicion(options?: UseClipboardSuspicionOptions): string | null`
+
+Treats every copy operation like the opening scene of a low-budget investigation. It never examines the copied text; apparently the existence of a duplicate is evidence enough.
+
+```ts
+interface UseClipboardSuspicionOptions {
+  messages?: readonly string[];
+  document?: Document | null;
+}
+
+function useClipboardSuspicion(
+  options?: UseClipboardSuspicionOptions,
+): string | null;
+```
+
+```tsx
+import { useClipboardSuspicion } from "greact-hooks";
+
+function EvidenceBoard() {
+  const suspicion = useClipboardSuspicion({
+    messages: ["A suspicious duplicate is now at large."],
+  });
+
+  return <p>{suspicion ?? "The clipboard currently has an alibi."}</p>;
+}
+```
+
+- **Parameters:** `messages` is the ordered, looping list of accusations; an empty list clears and silences the hook. `document` optionally supplies the document to monitor (for example, one from an iframe); it defaults to the current document, and `null` disables monitoring.
+- **Returns:** the next configured accusation after a `copy` event, otherwise `null`.
+- **APIs and permissions:** uses the DOM `copy` event. It requests no clipboard permission and deliberately does not read, alter, or retain copied content.
+- **Effects and compatibility:** it installs one document listener while mounted and removes it on cleanup or when the monitored document changes. It is inert during SSR or without usable event-listener APIs. Browsers with standard Clipboard Events are supported. Displaying its accusations may annoy users, so do not present them as real security warnings.
+
+Use it when ordinary copy-and-paste needs theatrical suspicion instead of a useful confirmation toast.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |
