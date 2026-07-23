@@ -206,6 +206,43 @@ function EndlessArticle() {
 
 Use it when a long page needs a dubious oracle instead of a progress indicator.
 
+### `useFocusFanfare(options?: UseFocusFanfareOptions): string | null`
+
+Treats every focus change like the entrance of a minor royal. It does not play music, notify anyone, or improve accessibility; it merely gives the focus ring far more narrative importance than it deserves.
+
+```ts
+interface UseFocusFanfareOptions {
+  messages?: readonly string[];
+  document?: Document | null;
+}
+
+function useFocusFanfare(options?: UseFocusFanfareOptions): string | null;
+```
+
+```tsx
+import { useFocusFanfare } from "greact-hooks";
+
+function VeryImportantForm() {
+  const fanfare = useFocusFanfare({
+    messages: ["The email field has graced us with its presence."],
+  });
+
+  return (
+    <>
+      <input aria-label="Email" type="email" />
+      <p>{fanfare ?? "Awaiting a suitably important entrance."}</p>
+    </>
+  );
+}
+```
+
+- **Parameters:** `messages` is the ordered, looping list of announcements; an empty list silences the hook. `document` optionally supplies the document to observe (for example, one from an iframe); it defaults to the current document, and `null` disables observation.
+- **Returns:** the next configured announcement after a `focusin` event, otherwise `null`.
+- **APIs and permissions:** uses the DOM `focusin` event. It needs no permission, does not read the focused element, and does not make any sound despite its name.
+- **Effects and compatibility:** it installs one document listener while mounted and removes it on cleanup or when the monitored document changes. It is inert during SSR or when the required listener APIs are unavailable. It works in browsers with standard bubbling focus events.
+
+Use it when a form control needs a red-carpet entrance instead of ordinary, respectful focus management.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |

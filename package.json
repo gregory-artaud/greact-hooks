@@ -1,6 +1,6 @@
 {
   "name": "greact-hooks",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "packageManager": "pnpm@10.28.2",
   "type": "module",
   "main": "dist/index.cjs",
