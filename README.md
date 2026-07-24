@@ -277,6 +277,40 @@ function EvidenceBoard() {
 
 Use it when ordinary copy-and-paste needs theatrical suspicion instead of a useful confirmation toast.
 
+### `useBackButtonRegret(options?: UseBackButtonRegretOptions): string | null`
+
+Turns every browser history traversal into melodrama about revisiting old decisions. Despite the name, browsers do not reveal whether a `popstate` came from Back, Forward, or another history traversal, so the hook judges them all equally.
+
+```ts
+interface UseBackButtonRegretOptions {
+  messages?: readonly string[];
+  window?: Window | null;
+}
+
+function useBackButtonRegret(
+  options?: UseBackButtonRegretOptions,
+): string | null;
+```
+
+```tsx
+import { useBackButtonRegret } from "greact-hooks";
+
+function NavigationTherapist() {
+  const regret = useBackButtonRegret({
+    messages: ["History repeats itself, but with more clicking."],
+  });
+
+  return <p>{regret ?? "No navigation decisions have been questioned yet."}</p>;
+}
+```
+
+- **Parameters:** `messages` is the ordered, looping list of regrets; an empty list clears and silences the hook. `window` optionally supplies the window to monitor (for example, one from an iframe); it defaults to the current window, and `null` disables monitoring.
+- **Returns:** the next configured regret after a `popstate` event, otherwise `null`.
+- **APIs and permissions:** uses the browser History API's `popstate` event. It needs no permission and neither reads nor changes history entries.
+- **Effects and compatibility:** it installs one window listener while mounted and removes it on cleanup or when the monitored window changes. It is inert during SSR or without usable event-listener APIs. Browsers with the standard History API are supported. It cannot distinguish Back from Forward, and displaying its regrets may make ordinary navigation unnecessarily judgmental.
+
+Use it when a router needs an unqualified therapist instead of another loading indicator.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |
