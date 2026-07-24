@@ -123,6 +123,7 @@
             <a href="#useSameSame">useSameSame</a>
             <a href="#useStateWithoutSetter">useStateWithoutSetter</a>
             <a href="#useRefRef">useRefRef</a>
+            <a href="#useEffectWithoutEffect">useEffectWithoutEffect</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -235,6 +236,16 @@ useInterval(() =&gt; setTick((n) =&gt; n + 1), 1000);</code></pre>
               <pre><code>const refRef = useRefRef("unnecessarily deep");
 const value = refRef.current.current;</code></pre>
               <p>A reasonable person would use <code>useRef(initialValue)</code>. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useEffectWithoutEffect">
+              <header><span class="tag tag--new">New</span><h3>useEffectWithoutEffect()</h3></header>
+              <p>Schedules a React effect whose entire effect is having no effect.</p>
+              <h4>Signature</h4>
+              <pre><code>useEffectWithoutEffect(): void;</code></pre>
+              <h4>Example</h4>
+              <pre><code>useEffectWithoutEffect();</code></pre>
+              <p>A reasonable person would do nothing at all. This hook should not exist.</p>
             </article>
           </div>
         </div>

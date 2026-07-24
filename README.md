@@ -357,6 +357,26 @@ const value = refRef.current.current;
 
 Ce hook n'aurait jamais dû exister, car une ref n'a pas besoin d'une ref pour la surveiller.
 
+### `useEffectWithoutEffect(): void`
+
+Planifie un effet React dont l'effet consiste à n'avoir aucun effet.
+
+```ts
+function useEffectWithoutEffect(): void;
+```
+
+```tsx
+import { useEffectWithoutEffect } from "greact-hooks";
+
+useEffectWithoutEffect();
+```
+
+- **Paramètres :** aucun.
+- **Retour :** rien.
+- **Alternative raisonnable :** ne rien faire du tout.
+
+Ce hook n'aurait jamais dû exister, car React n'a pas besoin d'être prévenu quand rien ne doit arriver.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
