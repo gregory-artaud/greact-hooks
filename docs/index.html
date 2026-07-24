@@ -3,308 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gReact Hooks • React Hooks Nobody Needed</title>
+    <meta name="theme-color" content="#17052d" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>" />
+    <title>gReact Hooks • Next-Gen React Hooks</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
     <header class="hero" id="top">
-      <nav class="hero__nav">
+      <div class="stars" aria-hidden="true"></div>
+      <span class="spark spark--one" aria-hidden="true">✦</span>
+      <span class="spark spark--two" aria-hidden="true">✦</span>
+      <nav class="hero__nav shell">
         <a class="hero__brand" href="#top">gReact Hooks</a>
-        <div class="hero__links">
+        <div class="hero__links" id="navigation">
           <a href="#features">Highlights</a>
           <a href="#docs">Documentation</a>
-          <a
-            class="button button--outline"
-            href="https://www.npmjs.com/package/greact-hooks"
-            target="_blank"
-            rel="noreferrer"
-            >npm</a
-          >
-          <a
-            class="button"
-            href="https://github.com/gregory-artaud/greact-hooks"
-            target="_blank"
-            rel="noreferrer"
-            >GitHub</a
-          >
+          <a href="https://www.npmjs.com/package/greact-hooks" target="_blank" rel="noreferrer">npm</a>
+          <a class="button button--yellow" href="https://github.com/gregory-artaud/greact-hooks" target="_blank" rel="noreferrer">GitHub</a>
         </div>
-        <button class="hero__menu" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="hero__menu" aria-label="Toggle navigation" aria-controls="navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
       </nav>
-      <div class="hero__content">
+
+      <div class="hero__content shell">
         <div class="hero__copy">
-          <p class="eyebrow">React 19 Ready</p>
-          <h1>React hooks nobody needed, now in one package.</h1>
+          <p class="eyebrow">React 19 ready, emotionally questionable</p>
+          <h1>gReact<br />Hooks</h1>
+          <p class="tagline">The hook suite that upgrades your state story.</p>
           <p class="lead">
-            Technically valid React 19 abstractions for making simple values,
-            browser events, and questionable decisions more complicated.
+            gReact Hooks keeps everything you love about hooks and layers in modern state ergonomics:
+            immutable snapshots, effortless partial updates, and production-grade utilities.
           </p>
           <div class="hero__actions">
-            <a class="button" href="#docs">Explore Hooks</a>
-            <a class="button button--ghost" href="#features">Why gReact</a>
+            <a class="button button--green" href="#docs">Explore Hooks</a>
+            <a class="button button--pink" href="#features">Why gReact?</a>
           </div>
-          <div class="hero__install">
-            <span>Install with your favourite package manager:</span>
+          <button class="install" type="button" data-copy="pnpm add greact-hooks">
+            <span>Install with your favourite package manager</span>
             <code>pnpm add greact-hooks</code>
-          </div>
+          </button>
         </div>
-        <div class="hero__card" role="region" aria-label="useSameSame preview">
-          <div class="hero__card-heading">useSameSame in action</div>
-          <pre><code>const original = "same";
-const stillOriginal = useSameSame(original);
 
-// A reasonable person would use original.
-          </code></pre>
+        <div class="hero__visual" aria-label="A cat wearing pixel sunglasses rides a unicorn through a rainbow">
+          <div class="rainbow" aria-hidden="true"></div>
+          <div class="creature" aria-hidden="true">
+            <div class="tail"></div><div class="unicorn-body"></div><div class="unicorn-neck"></div>
+            <div class="unicorn-head"></div><div class="horn"></div><div class="mane"></div>
+            <div class="eye"></div><div class="snout"></div>
+            <div class="leg leg--one"></div><div class="leg leg--two"></div>
+            <div class="leg leg--three"></div><div class="leg leg--four"></div>
+            <div class="cat"><div class="cat-tail"></div><div class="cat-body"></div><div class="cat-head"><div class="glasses"></div></div></div>
+          </div>
+          <div class="code-card">
+            <div class="code-card__heading">useState2 in action</div>
+            <pre><code>const [presence, setPresence] = useState2({
+  status: "offline",
+  lastSeen: 0,
+});
+
+useInterval(() =&gt; {
+  fetchPresence().then(setPresence);
+}, 3000);
+
+setPresence({ status: "online" });</code></pre>
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="section" id="features">
-        <div class="section__intro">
-          <h2>Highlights built for no compelling reason.</h2>
-          <p>
-            Every public hook is documented below. Some work with events; one
-            works extremely hard to return zero.
-          </p>
-        </div>
-        <div class="grid grid--features">
-          <article class="feature">
-            <h3>React 19 compatible</h3>
-            <p>
-              The hooks obey React's rules even when their concepts offend
-              common sense.
-            </p>
-          </article>
-          <article class="feature">
-            <h3>Public API documented</h3>
-            <p>
-              The catalogue matches the package exports, including every absurd
-              signature.
-            </p>
-          </article>
-          <article class="feature">
-            <h3>Minimal by instinct</h3>
-            <p>
-              The smallest bad abstraction usually wins. Options are reserved
-              for hooks that already had them.
-            </p>
-          </article>
-          <article class="feature">
-            <h3>Tree-shakeable regrets</h3>
-            <p>
-              ES module builds ship with types. Pick only the mistakes your
-              bundle deserves.
-            </p>
-          </article>
+      <section class="section section--features" id="features">
+        <div class="shell">
+          <div class="section__intro section__intro--center">
+            <p class="eyebrow">Good ideas, questionable naming</p>
+            <h2>Highlights built for teams shipping tomorrow.</h2>
+            <p>Drop in <code>useState2</code> and unlock a cleaner state flow immediately. Every hook in the suite is engineered for concurrency-safe React 19 apps.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature"><span class="feature__icon">💗</span><h3>Drop-in upgrade</h3><p>Swap your imports and keep coding. <code>useState2</code> returns the same tuple you already know, with smarter semantics.</p></article>
+            <article class="feature"><span class="feature__icon">✨</span><h3>No mutation surprises</h3><p>Immutable snapshots make accidental mutations a thing of the past, even during concurrent renders.</p></article>
+            <article class="feature"><span class="feature__icon">🦄</span><h3>Partial patches included</h3><p>Update only what changed. Pass a patch object or functional updater and stay focused on the UI.</p></article>
+            <article class="feature"><span class="feature__icon">⭐</span><h3>Tree-shakeable footprint</h3><p>ES module builds ship with types and zero runtime baggage. Pick only the hooks you need.</p></article>
+          </div>
         </div>
       </section>
 
-      <section class="section section--alt">
-        <div class="split">
+      <section class="section section--split">
+        <div class="split shell">
           <div class="split__copy">
-            <h2>Abstraction without justification.</h2>
-            <p>
-              These hooks run, compile, and clean up after themselves. That does
-              not explain why most of them exist.
-            </p>
+            <p class="eyebrow">Less refactor, more sparkle</p>
+            <h2>State ergonomics without the refactor hangover.</h2>
+            <p><code>useState2</code> introduces partial merging and read-only snapshots while staying fully backwards compatible. It is the evolution of state management you always wanted, designed for concurrent rendering.</p>
           </div>
           <div class="split__card">
-            <h3>Why reasonable teams hesitate</h3>
+            <h3>Why teams switch</h3>
             <ul>
-              <li>Several results could be written as literals.</li>
-              <li>Browser events receive unnecessary personalities.</li>
-              <li>The package name contains a capital letter in spirit.</li>
+              <li>Safer functional updates with deep context.</li>
+              <li>Painless migration from existing <code>useState</code> usage.</li>
+              <li>Battle-tested alongside utilities like <code>useInterval</code>.</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section class="section" id="docs">
-        <div class="section__intro">
-          <h2>Hook documentation</h2>
-          <p>Every hook the package actually exports, without pretending they are essential.</p>
-        </div>
-        <div class="docs">
-          <article class="docs__item" id="useInterval">
-            <header>
-              <span class="tag">Utility</span>
-              <h3>useInterval(callback, delay)</h3>
-            </header>
-            <p>
-              Run logic on a stable cadence without manual cleanup. Pause by
-              passing `null` for the delay.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useInterval(callback: () => void, delay: number | null);
-                        </code></pre>
-            <h4>Patterns</h4>
-            <ul>
-              <li>Polling APIs and refreshing dashboards.</li>
-              <li>Scheduling background updates alongside ordinary state.</li>
-              <li>Pausing work by toggling the delay to `null`.</li>
-            </ul>
-            <h4>Example</h4>
-            <pre><code>const [tick, setTick] = useState(0);
-                            useInterval(() => setTick((n) => n + 1), 1000);
-                        </code></pre>
-          </article>
+      <section class="section section--docs" id="docs">
+        <div class="shell">
+          <div class="section__intro">
+            <p class="eyebrow">Read the fine print</p>
+            <h2>Hook documentation</h2>
+            <p>Everything you need to integrate gReact Hooks today.</p>
+          </div>
+          <div class="docs">
+            <article class="docs__item" id="useState2">
+              <header><span class="tag">Core</span><h3>useState2&lt;T&gt;(initialState)</h3></header>
+              <p>Smart state with immutable reads and ergonomic writes. Works as a drop-in replacement for React's <code>useState</code>.</p>
+              <h4>Signature</h4>
+              <pre><code>const [state, setState] = useState2(initialState);
+setState(nextValue | patch | updater);</code></pre>
+              <h4>Key behaviours</h4>
+              <ul><li>Read-only snapshots guard against accidental mutation.</li><li>Patch objects merge like class component <code>setState</code>.</li><li>Functional updates receive a fresh snapshot each render.</li></ul>
+              <h4>Example</h4>
+              <pre><code>const [todo, setTodo] = useState2({ title: "", done: false });
+setTodo({ done: true });
+setTodo((prev) =&gt; ({ ...prev, title: prev.title.trim() }));</code></pre>
+            </article>
 
-          <article class="docs__item" id="useDramaticPause">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useDramaticPause(delay?)</h3>
-            </header>
-            <p>
-              Decides that an idle pointer is a theatrical event instead of
-              ordinary inactivity.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useDramaticPause(delay?: number): boolean;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const suspense = useDramaticPause(1500);</code></pre>
-          </article>
-
-          <article class="docs__item" id="useTabJealousy">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useTabJealousy(options?)</h3>
-            </header>
-            <p>
-              Makes a browser tab complain after its visitor has looked at
-              another tab.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useTabJealousy(options?: UseTabJealousyOptions): string | null;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const jealousy = useTabJealousy();</code></pre>
-          </article>
-
-          <article class="docs__item" id="useKeyMashExcuse">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useKeyMashExcuse(options?)</h3>
-            </header>
-            <p>
-              Converts hurried typing into a formal excuse nobody requested.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useKeyMashExcuse(options?: UseKeyMashExcuseOptions): string | null;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const excuse = useKeyMashExcuse({ threshold: 4 });</code></pre>
-          </article>
-
-          <article class="docs__item" id="useDoomScrollOracle">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useDoomScrollOracle(options?)</h3>
-            </header>
-            <p>
-              Predicts a fictional future from the deeply mystical act of
-              scrolling down.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useDoomScrollOracle(options?: UseDoomScrollOracleOptions): string | null;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const prophecy = useDoomScrollOracle({ distance: 800 });</code></pre>
-          </article>
-
-          <article class="docs__item" id="useFocusFanfare">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useFocusFanfare(options?)</h3>
-            </header>
-            <p>
-              Gives every focus change the unearned importance of a royal
-              entrance.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useFocusFanfare(options?: UseFocusFanfareOptions): string | null;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const fanfare = useFocusFanfare();</code></pre>
-          </article>
-
-          <article class="docs__item" id="useClipboardSuspicion">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useClipboardSuspicion(options?)</h3>
-            </header>
-            <p>
-              Treats every copy operation as evidence in an investigation with
-              no case.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useClipboardSuspicion(options?: UseClipboardSuspicionOptions): string | null;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const suspicion = useClipboardSuspicion();</code></pre>
-          </article>
-
-          <article class="docs__item" id="useBackButtonRegret">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useBackButtonRegret(options?)</h3>
-            </header>
-            <p>
-              Judges history traversal as if revisiting a page were a regrettable
-              life choice.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useBackButtonRegret(options?: UseBackButtonRegretOptions): string | null;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const regret = useBackButtonRegret();</code></pre>
-          </article>
-
-          <article class="docs__item" id="useZeroZero">
-            <header>
-              <span class="tag">Absurd</span>
-              <h3>useZeroZero()</h3>
-            </header>
-            <p>Returns zero, with React involved for no defensible reason.</p>
-            <h4>Signature</h4>
-            <pre><code>useZeroZero(): number;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const zero = useZeroZero();</code></pre>
-          </article>
-
-          <article class="docs__item" id="useSameSame">
-            <header>
-              <span class="tag tag--new">New</span>
-              <h3>useSameSame&lt;T&gt;(value)</h3>
-            </header>
-            <p>
-              Returns exactly the supplied value after making it pass through
-              <code>useMemo</code>.
-            </p>
-            <h4>Signature</h4>
-            <pre><code>useSameSame&lt;T&gt;(value: T): T;</code></pre>
-            <h4>Example</h4>
-            <pre><code>const sameName = useSameSame("Greg");</code></pre>
-            <p>A reasonable person would use the value directly.</p>
-          </article>
+            <article class="docs__item" id="useInterval">
+              <header><span class="tag">Utility</span><h3>useInterval(callback, delay)</h3></header>
+              <p>Run logic on a stable cadence without manual cleanup. Pause by passing <code>null</code> for the delay.</p>
+              <h4>Signature</h4>
+              <pre><code>useInterval(callback: () =&gt; void, delay: number | null);</code></pre>
+              <h4>Patterns</h4>
+              <ul><li>Polling APIs and refreshing dashboards.</li><li>Scheduling background updates alongside <code>useState2</code>.</li><li>Pausing work by toggling the delay to <code>null</code>.</li></ul>
+              <h4>Example</h4>
+              <pre><code>const [tick, setTick] = useState2(0);
+useInterval(() =&gt; setTick((n) =&gt; n + 1), 1000);</code></pre>
+            </article>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <div class="footer__content">
-        <span>&copy; <span id="year"></span> gReact Hooks contributors.</span>
-        <div class="footer__links">
-          <a href="#top">Back to top</a>
-          <a href="mailto:gregory.rtd+greact-hooks@gmail.com">Contact</a>
-        </div>
-      </div>
+      <div class="footer__content shell"><strong>gReact Hooks</strong><span>&copy; <span id="year"></span> gReact Hooks contributors.</span><div class="footer__links"><a href="#top">Back to top</a><a href="mailto:gregory.rtd+greact-hooks@gmail.com">Contact</a></div></div>
     </footer>
-
+    <div class="toast" role="status" aria-live="polite"></div>
     <script src="script.js"></script>
   </body>
 </html>
