@@ -311,6 +311,26 @@ function NavigationTherapist() {
 
 Use it when a router needs an unqualified therapist instead of another loading indicator.
 
+### `useZeroZero(): number`
+
+Retourne `0`, mais le fait mémoriser par React pour être absolument certain.
+
+```ts
+function useZeroZero(): number;
+```
+
+```tsx
+import { useZeroZero } from "greact-hooks";
+
+const zero = useZeroZero();
+```
+
+- **Paramètres :** aucun.
+- **Retour :** le nombre `0`, à chaque rendu.
+- **Alternative raisonnable :** écrire directement `0`.
+
+Ce hook n'aurait jamais dû exister, car JavaScript savait déjà compter jusque-là.
+
 ## `useState2` vs React `useState`
 | Feature | `useState2` | React `useState` |
 | --- | --- | --- |

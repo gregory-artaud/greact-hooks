@@ -6,3 +6,4 @@ export * from "./use-doom-scroll-oracle";
 export * from "./use-focus-fanfare";
 export * from "./use-clipboard-suspicion";
 export * from "./use-back-button-regret";
+export * from "./use-zero-zero";
