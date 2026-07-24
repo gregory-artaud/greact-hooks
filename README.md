@@ -336,6 +336,27 @@ const permanentlyInitial = useStateWithoutSetter("still initial");
 
 Ce hook n'aurait jamais dû exister, car retirer le setter de `useState` ne constitue pas une amélioration.
 
+### `useRefRef<T>(initialValue: T): RefObject<RefObject<T>>`
+
+Range une ref React dans une autre ref React, au cas où une seule couche d'indirection semblerait trop directe.
+
+```ts
+function useRefRef<T>(initialValue: T): RefObject<RefObject<T>>;
+```
+
+```tsx
+import { useRefRef } from "greact-hooks";
+
+const refRef = useRefRef("deeply unnecessary");
+const value = refRef.current.current;
+```
+
+- **Paramètre :** `initialValue`, la valeur qui sera immobilisée deux niveaux plus loin.
+- **Retour :** une ref stable dont `current` est une autre ref stable contenant la valeur initiale.
+- **Alternative raisonnable :** utiliser directement `useRef(initialValue)`.
+
+Ce hook n'aurait jamais dû exister, car une ref n'a pas besoin d'une ref pour la surveiller.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

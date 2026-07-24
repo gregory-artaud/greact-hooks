@@ -122,6 +122,7 @@
             <a href="#useZeroZero">useZeroZero</a>
             <a href="#useSameSame">useSameSame</a>
             <a href="#useStateWithoutSetter">useStateWithoutSetter</a>
+            <a href="#useRefRef">useRefRef</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -223,6 +224,17 @@ useInterval(() =&gt; setTick((n) =&gt; n + 1), 1000);</code></pre>
               <h4>Example</h4>
               <pre><code>const permanentlyInitial = useStateWithoutSetter("initial");</code></pre>
               <p>A reasonable person would use the value directly, or keep the setter. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useRefRef">
+              <header><span class="tag tag--new">New</span><h3>useRefRef&lt;T&gt;(initialValue)</h3></header>
+              <p>Stores a stable ref inside another stable ref, doubling the indirection without improving the value.</p>
+              <h4>Signature</h4>
+              <pre><code>useRefRef&lt;T&gt;(initialValue: T): RefObject&lt;RefObject&lt;T&gt;&gt;;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const refRef = useRefRef("unnecessarily deep");
+const value = refRef.current.current;</code></pre>
+              <p>A reasonable person would use <code>useRef(initialValue)</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>
