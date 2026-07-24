@@ -316,6 +316,26 @@ const sameName = useSameSame("Greg");
 
 Ce hook n'aurait jamais dû exister, car passer une valeur à travers React ne la rend pas plus identique.
 
+### `useStateWithoutSetter<T>(initialValue: T): T`
+
+Crée un état React, puis jette le seul moyen prévu pour le modifier.
+
+```ts
+function useStateWithoutSetter<T>(initialValue: T): T;
+```
+
+```tsx
+import { useStateWithoutSetter } from "greact-hooks";
+
+const permanentlyInitial = useStateWithoutSetter("still initial");
+```
+
+- **Paramètre :** `initialValue`, la valeur condamnée à rester initiale.
+- **Retour :** l'état initial, sans setter et donc sans avenir.
+- **Alternative raisonnable :** utiliser directement `initialValue`, ou `useState` si l'état doit réellement changer.
+
+Ce hook n'aurait jamais dû exister, car retirer le setter de `useState` ne constitue pas une amélioration.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -31,10 +31,10 @@
         <div class="hero__copy">
           <p class="eyebrow">React 19 ready, emotionally questionable</p>
           <h1>gReact<br />Hooks</h1>
-          <p class="tagline">The hook suite that upgrades your state story.</p>
+          <p class="tagline">Hooks for problems nobody should have.</p>
           <p class="lead">
-            gReact Hooks keeps everything you love about hooks and layers in modern state ergonomics:
-            immutable snapshots, effortless partial updates, and production-grade utilities.
+            Technically functional React 19 hooks with reasons to exist ranging from
+            “barely defensible” to “please just write the value directly.”
           </p>
           <div class="hero__actions">
             <a class="button button--green" href="#docs">Explore Hooks</a>
@@ -57,17 +57,12 @@
             <div class="cat"><div class="cat-tail"></div><div class="cat-body"></div><div class="cat-head"><div class="glasses"></div></div></div>
           </div>
           <div class="code-card">
-            <div class="code-card__heading">useState2 in action</div>
-            <pre><code>const [presence, setPresence] = useState2({
-  status: "offline",
-  lastSeen: 0,
-});
+            <div class="code-card__heading">useStateWithoutSetter inaction</div>
+            <pre><code>const status = useStateWithoutSetter("initial");
 
-useInterval(() =&gt; {
-  fetchPresence().then(setPresence);
-}, 3000);
-
-setPresence({ status: "online" });</code></pre>
+// There is no setter.
+// status remains "initial".
+// React has been involved for no reason.</code></pre>
           </div>
         </div>
       </div>
@@ -77,15 +72,15 @@ setPresence({ status: "online" });</code></pre>
       <section class="section section--features" id="features">
         <div class="shell">
           <div class="section__intro section__intro--center">
-            <p class="eyebrow">Good ideas, questionable naming</p>
-            <h2>Highlights built for teams shipping tomorrow.</h2>
-            <p>Drop in <code>useState2</code> and unlock a cleaner state flow immediately. Every hook in the suite is engineered for concurrency-safe React 19 apps.</p>
+            <p class="eyebrow">Bad ideas, accurate naming</p>
+            <h2>Small abstractions with enormous audacity.</h2>
+            <p>Every public hook works. Whether any of them should be called is a separate and much shorter discussion.</p>
           </div>
           <div class="feature-grid">
-            <article class="feature"><span class="feature__icon">💗</span><h3>Drop-in upgrade</h3><p>Swap your imports and keep coding. <code>useState2</code> returns the same tuple you already know, with smarter semantics.</p></article>
-            <article class="feature"><span class="feature__icon">✨</span><h3>No mutation surprises</h3><p>Immutable snapshots make accidental mutations a thing of the past, even during concurrent renders.</p></article>
-            <article class="feature"><span class="feature__icon">🦄</span><h3>Partial patches included</h3><p>Update only what changed. Pass a patch object or functional updater and stay focused on the UI.</p></article>
-            <article class="feature"><span class="feature__icon">⭐</span><h3>Tree-shakeable footprint</h3><p>ES module builds ship with types and zero runtime baggage. Pick only the hooks you need.</p></article>
+            <article class="feature"><span class="feature__icon">💗</span><h3>React involved</h3><p>Even values that need no hook can now require one.</p></article>
+            <article class="feature"><span class="feature__icon">✨</span><h3>Types included</h3><p>TypeScript can describe every questionable decision precisely.</p></article>
+            <article class="feature"><span class="feature__icon">🦄</span><h3>No coherent strategy</h3><p>Constants, browser melodrama, and intervals coexist without explanation.</p></article>
+            <article class="feature"><span class="feature__icon">⭐</span><h3>Tree-shakeable</h3><p>Your bundler can remove the hooks you were sensible enough not to import.</p></article>
           </div>
         </div>
       </section>
@@ -93,16 +88,16 @@ setPresence({ status: "online" });</code></pre>
       <section class="section section--split">
         <div class="split shell">
           <div class="split__copy">
-            <p class="eyebrow">Less refactor, more sparkle</p>
-            <h2>State ergonomics without the refactor hangover.</h2>
-            <p><code>useState2</code> introduces partial merging and read-only snapshots while staying fully backwards compatible. It is the evolution of state management you always wanted, designed for concurrent rendering.</p>
+            <p class="eyebrow">More indirection, no benefit</p>
+            <h2>React abstractions with an obvious better alternative.</h2>
+            <p>Write <code>0</code>. Use the value directly. Keep the setter. These are all excellent ways to avoid this package.</p>
           </div>
           <div class="split__card">
-            <h3>Why teams switch</h3>
+            <h3>Why nobody should switch</h3>
             <ul>
-              <li>Safer functional updates with deep context.</li>
-              <li>Painless migration from existing <code>useState</code> usage.</li>
-              <li>Battle-tested alongside utilities like <code>useInterval</code>.</li>
+              <li>Several APIs replace one line with one hook call.</li>
+              <li>The jokes are more stable than the product strategy.</li>
+              <li>React was already difficult enough without this.</li>
             </ul>
           </div>
         </div>
@@ -113,33 +108,121 @@ setPresence({ status: "online" });</code></pre>
           <div class="section__intro">
             <p class="eyebrow">Read the fine print</p>
             <h2>Hook documentation</h2>
-            <p>Everything you need to integrate gReact Hooks today.</p>
+            <p>Every public export, including the alternatives you should use instead.</p>
           </div>
+          <nav class="hook-index" aria-label="Hook documentation">
+            <a href="#useInterval">useInterval</a>
+            <a href="#useDramaticPause">useDramaticPause</a>
+            <a href="#useTabJealousy">useTabJealousy</a>
+            <a href="#useKeyMashExcuse">useKeyMashExcuse</a>
+            <a href="#useDoomScrollOracle">useDoomScrollOracle</a>
+            <a href="#useFocusFanfare">useFocusFanfare</a>
+            <a href="#useClipboardSuspicion">useClipboardSuspicion</a>
+            <a href="#useBackButtonRegret">useBackButtonRegret</a>
+            <a href="#useZeroZero">useZeroZero</a>
+            <a href="#useSameSame">useSameSame</a>
+            <a href="#useStateWithoutSetter">useStateWithoutSetter</a>
+          </nav>
           <div class="docs">
-            <article class="docs__item" id="useState2">
-              <header><span class="tag">Core</span><h3>useState2&lt;T&gt;(initialState)</h3></header>
-              <p>Smart state with immutable reads and ergonomic writes. Works as a drop-in replacement for React's <code>useState</code>.</p>
-              <h4>Signature</h4>
-              <pre><code>const [state, setState] = useState2(initialState);
-setState(nextValue | patch | updater);</code></pre>
-              <h4>Key behaviours</h4>
-              <ul><li>Read-only snapshots guard against accidental mutation.</li><li>Patch objects merge like class component <code>setState</code>.</li><li>Functional updates receive a fresh snapshot each render.</li></ul>
-              <h4>Example</h4>
-              <pre><code>const [todo, setTodo] = useState2({ title: "", done: false });
-setTodo({ done: true });
-setTodo((prev) =&gt; ({ ...prev, title: prev.title.trim() }));</code></pre>
-            </article>
-
             <article class="docs__item" id="useInterval">
               <header><span class="tag">Utility</span><h3>useInterval(callback, delay)</h3></header>
-              <p>Run logic on a stable cadence without manual cleanup. Pause by passing <code>null</code> for the delay.</p>
+              <p>Runs a callback repeatedly. This one is suspiciously defensible.</p>
               <h4>Signature</h4>
               <pre><code>useInterval(callback: () =&gt; void, delay: number | null);</code></pre>
-              <h4>Patterns</h4>
-              <ul><li>Polling APIs and refreshing dashboards.</li><li>Scheduling background updates alongside <code>useState2</code>.</li><li>Pausing work by toggling the delay to <code>null</code>.</li></ul>
               <h4>Example</h4>
-              <pre><code>const [tick, setTick] = useState2(0);
+              <pre><code>const [tick, setTick] = useState(0);
 useInterval(() =&gt; setTick((n) =&gt; n + 1), 1000);</code></pre>
+            </article>
+
+            <article class="docs__item" id="useDramaticPause">
+              <header><span class="tag">Drama</span><h3>useDramaticPause(delay?)</h3></header>
+              <p>Calls pointer inactivity a dramatic pause because “idle” lacked theatre.</p>
+              <h4>Signature</h4>
+              <pre><code>useDramaticPause(delay?: number): boolean;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const dramatic = useDramaticPause(1000);</code></pre>
+            </article>
+
+            <article class="docs__item" id="useTabJealousy">
+              <header><span class="tag">Drama</span><h3>useTabJealousy(options?)</h3></header>
+              <p>Makes a browser tab resent visitors who briefly leave it.</p>
+              <h4>Signature</h4>
+              <pre><code>useTabJealousy(options?: UseTabJealousyOptions): string | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const complaint = useTabJealousy();</code></pre>
+            </article>
+
+            <article class="docs__item" id="useKeyMashExcuse">
+              <header><span class="tag">Excuse</span><h3>useKeyMashExcuse(options?)</h3></header>
+              <p>Writes an alibi for a burst of keyboard nonsense.</p>
+              <h4>Signature</h4>
+              <pre><code>useKeyMashExcuse(options?: UseKeyMashExcuseOptions): string | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const excuse = useKeyMashExcuse({ threshold: 4 });</code></pre>
+            </article>
+
+            <article class="docs__item" id="useDoomScrollOracle">
+              <header><span class="tag">Prophecy</span><h3>useDoomScrollOracle(options?)</h3></header>
+              <p>Predicts absolutely nothing from how far someone scrolls.</p>
+              <h4>Signature</h4>
+              <pre><code>useDoomScrollOracle(options?: UseDoomScrollOracleOptions): string | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const prophecy = useDoomScrollOracle({ distance: 800 });</code></pre>
+            </article>
+
+            <article class="docs__item" id="useFocusFanfare">
+              <header><span class="tag">Applause</span><h3>useFocusFanfare(options?)</h3></header>
+              <p>Gives every focus change an entirely silent fanfare.</p>
+              <h4>Signature</h4>
+              <pre><code>useFocusFanfare(options?: UseFocusFanfareOptions): string | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const fanfare = useFocusFanfare();</code></pre>
+            </article>
+
+            <article class="docs__item" id="useClipboardSuspicion">
+              <header><span class="tag">Evidence</span><h3>useClipboardSuspicion(options?)</h3></header>
+              <p>Treats every copy event as evidence of an unspecified crime.</p>
+              <h4>Signature</h4>
+              <pre><code>useClipboardSuspicion(options?: UseClipboardSuspicionOptions): string | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const suspicion = useClipboardSuspicion();</code></pre>
+            </article>
+
+            <article class="docs__item" id="useBackButtonRegret">
+              <header><span class="tag">Regret</span><h3>useBackButtonRegret(options?)</h3></header>
+              <p>Judges history traversal without knowing whether it was Back or Forward.</p>
+              <h4>Signature</h4>
+              <pre><code>useBackButtonRegret(options?: UseBackButtonRegretOptions): string | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const regret = useBackButtonRegret();</code></pre>
+            </article>
+
+            <article class="docs__item" id="useZeroZero">
+              <header><span class="tag">Constant</span><h3>useZeroZero()</h3></header>
+              <p>Returns <code>0</code> through React. A reasonable person would write <code>0</code>.</p>
+              <h4>Signature</h4>
+              <pre><code>useZeroZero(): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const zero = useZeroZero();</code></pre>
+            </article>
+
+            <article class="docs__item" id="useSameSame">
+              <header><span class="tag">Identity</span><h3>useSameSame&lt;T&gt;(value)</h3></header>
+              <p>Returns the value supplied. Using the value directly remains available.</p>
+              <h4>Signature</h4>
+              <pre><code>useSameSame&lt;T&gt;(value: T): T;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const same = useSameSame(value);</code></pre>
+            </article>
+
+            <article class="docs__item" id="useStateWithoutSetter">
+              <header><span class="tag tag--new">New</span><h3>useStateWithoutSetter&lt;T&gt;(initialValue)</h3></header>
+              <p>Creates state, discards its setter, and leaves the initial value trapped forever.</p>
+              <h4>Signature</h4>
+              <pre><code>useStateWithoutSetter&lt;T&gt;(initialValue: T): T;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const permanentlyInitial = useStateWithoutSetter("initial");</code></pre>
+              <p>A reasonable person would use the value directly, or keep the setter. This hook should not exist.</p>
             </article>
           </div>
         </div>
