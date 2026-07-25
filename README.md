@@ -377,6 +377,28 @@ useEffectWithoutEffect();
 
 Ce hook n'aurait jamais dû exister, car React n'a pas besoin d'être prévenu quand rien ne doit arriver.
 
+### `useCallbackCallback<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => Return`
+
+Mémorise une fonction, puis mémorise une autre fonction uniquement chargée d'appeler la première.
+
+```ts
+function useCallbackCallback<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => Return;
+```
+
+```tsx
+import { useCallbackCallback } from "greact-hooks";
+
+const greetAgain = useCallbackCallback((name: string) => `Hello ${name}`);
+```
+
+- **Paramètre :** `callback`, la fonction qui va subir deux couches d'attention.
+- **Retour :** une fonction mémorisée qui appelle la fonction mémorisée.
+- **Alternative raisonnable :** utiliser directement `useCallback(callback, [callback])`.
+
+Ce hook n'aurait jamais dû exister, car un callback n'a pas besoin d'un callback pour le rappeler.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

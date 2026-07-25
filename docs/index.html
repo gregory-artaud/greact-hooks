@@ -124,6 +124,7 @@
             <a href="#useStateWithoutSetter">useStateWithoutSetter</a>
             <a href="#useRefRef">useRefRef</a>
             <a href="#useEffectWithoutEffect">useEffectWithoutEffect</a>
+            <a href="#useCallbackCallback">useCallbackCallback</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -246,6 +247,20 @@ const value = refRef.current.current;</code></pre>
               <h4>Example</h4>
               <pre><code>useEffectWithoutEffect();</code></pre>
               <p>A reasonable person would do nothing at all. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useCallbackCallback">
+              <header><span class="tag tag--new">New</span><h3>useCallbackCallback(callback)</h3></header>
+              <p>Memoizes a function, then memoizes another function whose only job is calling the first one.</p>
+              <h4>Signature</h4>
+              <pre><code>useCallbackCallback&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): (...args: Args) =&gt; Return;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const greetAgain = useCallbackCallback(
+  (name: string) =&gt; `Hello ${name}`,
+);</code></pre>
+              <p>A reasonable person would use <code>useCallback</code> once. This hook should not exist.</p>
             </article>
           </div>
         </div>
