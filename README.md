@@ -399,6 +399,26 @@ const greetAgain = useCallbackCallback((name: string) => `Hello ${name}`);
 
 Ce hook n'aurait jamais dû exister, car un callback n'a pas besoin d'un callback pour le rappeler.
 
+### `useTrueTrue(): boolean`
+
+Retourne `true`, mais seulement après avoir demandé confirmation à React.
+
+```ts
+function useTrueTrue(): boolean;
+```
+
+```tsx
+import { useTrueTrue } from "greact-hooks";
+
+const stillTrue = useTrueTrue();
+```
+
+- **Paramètres :** aucun.
+- **Retour :** `true`, obstinément.
+- **Alternative raisonnable :** écrire directement `true`.
+
+Ce hook n'aurait jamais dû exister, car le booléen était déjà vrai avant d'entrer dans React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

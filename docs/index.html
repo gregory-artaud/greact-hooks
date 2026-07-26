@@ -125,6 +125,7 @@
             <a href="#useRefRef">useRefRef</a>
             <a href="#useEffectWithoutEffect">useEffectWithoutEffect</a>
             <a href="#useCallbackCallback">useCallbackCallback</a>
+            <a href="#useTrueTrue">useTrueTrue</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -261,6 +262,16 @@ const value = refRef.current.current;</code></pre>
   (name: string) =&gt; `Hello ${name}`,
 );</code></pre>
               <p>A reasonable person would use <code>useCallback</code> once. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useTrueTrue">
+              <header><span class="tag tag--new">New</span><h3>useTrueTrue()</h3></header>
+              <p>Returns <code>true</code>, but only after React has confirmed what was already true.</p>
+              <h4>Signature</h4>
+              <pre><code>useTrueTrue(): boolean;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const stillTrue = useTrueTrue();</code></pre>
+              <p>A reasonable person would write <code>true</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>
