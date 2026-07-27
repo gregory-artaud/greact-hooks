@@ -547,6 +547,26 @@ refuseChange();
 
 Ce hook n'aurait jamais dû exister, car une commande incapable de produire le moindre changement est seulement une façon compliquée de ne rien faire.
 
+### `useRefThenWrap<T>(value: T): { value: T }`
+
+Demande à une ref de mémoriser la valeur, ignore cette mémoire, puis enveloppe la valeur courante dans un nouvel objet.
+
+```ts
+function useRefThenWrap<T>(value: T): { value: T };
+```
+
+```tsx
+import { useRefThenWrap } from "greact-hooks";
+
+const wrapped = useRefThenWrap("already available");
+```
+
+- **Paramètre :** `value`, la valeur inutilement confiée à une ref avant d'être utilisée directement.
+- **Retour :** un nouvel objet `{ value }` à chaque rendu.
+- **Alternative raisonnable :** écrire directement `{ value }`.
+
+Ce hook n'aurait jamais dû exister, car oublier une ref avant de fabriquer un objet ordinaire ne constitue pas une abstraction.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

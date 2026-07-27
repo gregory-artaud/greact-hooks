@@ -132,6 +132,7 @@
             <a href="#useWasteCall">useWasteCall</a>
             <a href="#useSetterWithoutState">useSetterWithoutState</a>
             <a href="#useNoChangeReducer">useNoChangeReducer</a>
+            <a href="#useRefThenWrap">useRefThenWrap</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -226,7 +227,7 @@ useInterval(() =&gt; setTick((n) =&gt; n + 1), 1000);</code></pre>
             </article>
 
             <article class="docs__item" id="useStateWithoutSetter">
-              <header><span class="tag tag--new">New</span><h3>useStateWithoutSetter&lt;T&gt;(initialValue)</h3></header>
+              <header><span class="tag">State</span><h3>useStateWithoutSetter&lt;T&gt;(initialValue)</h3></header>
               <p>Creates state, discards its setter, and leaves the initial value trapped forever.</p>
               <h4>Signature</h4>
               <pre><code>useStateWithoutSetter&lt;T&gt;(initialValue: T): T;</code></pre>
@@ -236,7 +237,7 @@ useInterval(() =&gt; setTick((n) =&gt; n + 1), 1000);</code></pre>
             </article>
 
             <article class="docs__item" id="useRefRef">
-              <header><span class="tag tag--new">New</span><h3>useRefRef&lt;T&gt;(initialValue)</h3></header>
+              <header><span class="tag">Ref</span><h3>useRefRef&lt;T&gt;(initialValue)</h3></header>
               <p>Stores a stable ref inside another stable ref, doubling the indirection without improving the value.</p>
               <h4>Signature</h4>
               <pre><code>useRefRef&lt;T&gt;(initialValue: T): RefObject&lt;RefObject&lt;T&gt;&gt;;</code></pre>
@@ -247,7 +248,7 @@ const value = refRef.current.current;</code></pre>
             </article>
 
             <article class="docs__item" id="useEffectWithoutEffect">
-              <header><span class="tag tag--new">New</span><h3>useEffectWithoutEffect()</h3></header>
+              <header><span class="tag">Effect</span><h3>useEffectWithoutEffect()</h3></header>
               <p>Schedules a React effect whose entire effect is having no effect.</p>
               <h4>Signature</h4>
               <pre><code>useEffectWithoutEffect(): void;</code></pre>
@@ -257,7 +258,7 @@ const value = refRef.current.current;</code></pre>
             </article>
 
             <article class="docs__item" id="useCallbackCallback">
-              <header><span class="tag tag--new">New</span><h3>useCallbackCallback(callback)</h3></header>
+              <header><span class="tag">Callback</span><h3>useCallbackCallback(callback)</h3></header>
               <p>Memoizes a function, then memoizes another function whose only job is calling the first one.</p>
               <h4>Signature</h4>
               <pre><code>useCallbackCallback&lt;Args extends unknown[], Return&gt;(
@@ -271,7 +272,7 @@ const value = refRef.current.current;</code></pre>
             </article>
 
             <article class="docs__item" id="useTrueTrue">
-              <header><span class="tag tag--new">New</span><h3>useTrueTrue()</h3></header>
+              <header><span class="tag">Constant</span><h3>useTrueTrue()</h3></header>
               <p>Returns <code>true</code>, but only after React has confirmed what was already true.</p>
               <h4>Signature</h4>
               <pre><code>useTrueTrue(): boolean;</code></pre>
@@ -281,7 +282,7 @@ const value = refRef.current.current;</code></pre>
             </article>
 
             <article class="docs__item" id="useTransitionWithoutTransition">
-              <header><span class="tag tag--new">New</span><h3>useTransitionWithoutTransition()</h3></header>
+              <header><span class="tag">Transition</span><h3>useTransitionWithoutTransition()</h3></header>
               <p>Prepares a React transition, then discards the only function capable of starting it.</p>
               <h4>Signature</h4>
               <pre><code>useTransitionWithoutTransition(): boolean;</code></pre>
@@ -291,7 +292,7 @@ const value = refRef.current.current;</code></pre>
             </article>
 
             <article class="docs__item" id="useEitherWay">
-              <header><span class="tag tag--new">New</span><h3>useEitherWay&lt;T&gt;(value)</h3></header>
+              <header><span class="tag">Choice</span><h3>useEitherWay&lt;T&gt;(value)</h3></header>
               <p>Demands a boolean choice, then returns the same value from either branch.</p>
               <h4>Signature</h4>
               <pre><code>useEitherWay&lt;T&gt;(value: T): (either: boolean) =&gt; T;</code></pre>
@@ -302,7 +303,7 @@ const answer = chooseAnswer(false);</code></pre>
             </article>
 
             <article class="docs__item" id="useSelfCount">
-              <header><span class="tag tag--new">New</span><h3>useSelfCount&lt;T&gt;(value)</h3></header>
+              <header><span class="tag">Count</span><h3>useSelfCount&lt;T&gt;(value)</h3></header>
               <p>Puts a value in a collection by itself, then counts the unsurprising single occurrence.</p>
               <h4>Signature</h4>
               <pre><code>useSelfCount&lt;T&gt;(value: T): readonly [T, number];</code></pre>
@@ -312,7 +313,7 @@ const answer = chooseAnswer(false);</code></pre>
             </article>
 
             <article class="docs__item" id="useWasteCall">
-              <header><span class="tag tag--new">New</span><h3>useWasteCall()</h3></header>
+              <header><span class="tag">Callback</span><h3>useWasteCall()</h3></header>
               <p>Calls a callback twice, then throws away the second result with complete precision.</p>
               <h4>Signature</h4>
               <pre><code>useWasteCall(): &lt;T&gt;(callback: () =&gt; T) =&gt; T;</code></pre>
@@ -323,7 +324,7 @@ const firstResult = wasteCall(() =&gt; calculate());</code></pre>
             </article>
 
             <article class="docs__item" id="useSetterWithoutState">
-              <header><span class="tag tag--new">New</span><h3>useSetterWithoutState&lt;T&gt;(initialValue)</h3></header>
+              <header><span class="tag">State</span><h3>useSetterWithoutState&lt;T&gt;(initialValue)</h3></header>
               <p>Creates React state, throws away its value, and keeps only the means to update something nobody can read.</p>
               <h4>Signature</h4>
               <pre><code>useSetterWithoutState&lt;T&gt;(
@@ -336,7 +337,7 @@ setInvisibleState("still hidden");</code></pre>
             </article>
 
             <article class="docs__item" id="useNoChangeReducer">
-              <header><span class="tag tag--new">New</span><h3>useNoChangeReducer&lt;T&gt;(initialValue)</h3></header>
+              <header><span class="tag">Reducer</span><h3>useNoChangeReducer&lt;T&gt;(initialValue)</h3></header>
               <p>Creates a reducer whose dispatch asks for change and receives the exact same state back.</p>
               <h4>Signature</h4>
               <pre><code>useNoChangeReducer&lt;T&gt;(
@@ -346,6 +347,16 @@ setInvisibleState("still hidden");</code></pre>
               <pre><code>const [value, refuseChange] = useNoChangeReducer("unchanged");
 refuseChange();</code></pre>
               <p>A reasonable person would use the initial value and offer no action. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useRefThenWrap">
+              <header><span class="tag tag--new">New</span><h3>useRefThenWrap&lt;T&gt;(value)</h3></header>
+              <p>Stores a value in a ref, ignores the ref, then wraps the current value in a fresh object.</p>
+              <h4>Signature</h4>
+              <pre><code>useRefThenWrap&lt;T&gt;(value: T): { value: T };</code></pre>
+              <h4>Example</h4>
+              <pre><code>const wrapped = useRefThenWrap("already available");</code></pre>
+              <p>A reasonable person would write <code>{ value }</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>
