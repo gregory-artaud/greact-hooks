@@ -129,6 +129,7 @@
             <a href="#useTransitionWithoutTransition">useTransitionWithoutTransition</a>
             <a href="#useEitherWay">useEitherWay</a>
             <a href="#useSelfCount">useSelfCount</a>
+            <a href="#useWasteCall">useWasteCall</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -306,6 +307,17 @@ const answer = chooseAnswer(false);</code></pre>
               <h4>Example</h4>
               <pre><code>const [answer, occurrences] = useSelfCount("alone");</code></pre>
               <p>A reasonable person would write <code>[value, 1]</code>. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useWasteCall">
+              <header><span class="tag tag--new">New</span><h3>useWasteCall()</h3></header>
+              <p>Calls a callback twice, then throws away the second result with complete precision.</p>
+              <h4>Signature</h4>
+              <pre><code>useWasteCall(): &lt;T&gt;(callback: () =&gt; T) =&gt; T;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const wasteCall = useWasteCall();
+const firstResult = wasteCall(() =&gt; calculate());</code></pre>
+              <p>A reasonable person would call the callback once. This hook should not exist.</p>
             </article>
           </div>
         </div>

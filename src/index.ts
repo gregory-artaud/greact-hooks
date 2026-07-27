@@ -16,3 +16,4 @@ export * from "./use-true-true";
 export * from "./use-transition-without-transition";
 export * from "./use-either-way";
 export * from "./use-self-count";
+export * from "./use-waste-call";

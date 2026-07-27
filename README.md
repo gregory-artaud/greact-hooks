@@ -480,6 +480,27 @@ const [answer, occurrences] = useSelfCount("alone");
 
 Ce hook n'aurait jamais dû exister, car compter l'unique élément d'une collection créée exprès ne produit aucune information.
 
+### `useWasteCall(): <T>(callback: () => T) => T`
+
+Retourne une fonction qui appelle un callback deux fois, puis gaspille entièrement le résultat du second appel.
+
+```ts
+function useWasteCall(): <T>(callback: () => T) => T;
+```
+
+```tsx
+import { useWasteCall } from "greact-hooks";
+
+const wasteCall = useWasteCall();
+const firstResult = wasteCall(() => calculate());
+```
+
+- **Paramètres :** aucun.
+- **Retour :** une fonction stable qui appelle `callback` deux fois et retourne uniquement le premier résultat.
+- **Alternative raisonnable :** appeler directement le callback une seule fois.
+
+Ce hook n'aurait jamais dû exister, car refaire un travail uniquement pour jeter son résultat est strictement moins bien.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
