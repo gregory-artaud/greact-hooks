@@ -439,6 +439,27 @@ const isNothingPending = useTransitionWithoutTransition();
 
 Ce hook n'aurait jamais dû exister, car une transition sans moyen de démarrer est seulement une attente qui n'arrivera pas.
 
+### `useEitherWay<T>(value: T): (either: boolean) => T`
+
+Retourne une fonction qui exige un choix booléen, puis renvoie la même valeur dans les deux cas.
+
+```ts
+function useEitherWay<T>(value: T): (either: boolean) => T;
+```
+
+```tsx
+import { useEitherWay } from "greact-hooks";
+
+const chooseAnswer = useEitherWay("same answer");
+const answer = chooseAnswer(false);
+```
+
+- **Paramètre :** `value`, la valeur déjà décidée avant le faux choix.
+- **Retour :** une fonction qui retourne `value`, que son argument soit `true` ou `false`.
+- **Alternative raisonnable :** utiliser directement `value`.
+
+Ce hook n'aurait jamais dû exister, car demander un choix entre deux réponses identiques ne choisit rien.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

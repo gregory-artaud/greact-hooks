@@ -127,6 +127,7 @@
             <a href="#useCallbackCallback">useCallbackCallback</a>
             <a href="#useTrueTrue">useTrueTrue</a>
             <a href="#useTransitionWithoutTransition">useTransitionWithoutTransition</a>
+            <a href="#useEitherWay">useEitherWay</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -283,6 +284,17 @@ const value = refRef.current.current;</code></pre>
               <h4>Example</h4>
               <pre><code>const isNothingPending = useTransitionWithoutTransition();</code></pre>
               <p>A reasonable person would write <code>false</code>. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useEitherWay">
+              <header><span class="tag tag--new">New</span><h3>useEitherWay&lt;T&gt;(value)</h3></header>
+              <p>Demands a boolean choice, then returns the same value from either branch.</p>
+              <h4>Signature</h4>
+              <pre><code>useEitherWay&lt;T&gt;(value: T): (either: boolean) =&gt; T;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const chooseAnswer = useEitherWay("same answer");
+const answer = chooseAnswer(false);</code></pre>
+              <p>A reasonable person would use the value directly. This hook should not exist.</p>
             </article>
           </div>
         </div>
