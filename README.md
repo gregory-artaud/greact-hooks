@@ -524,6 +524,29 @@ setInvisibleState("still hidden");
 
 Ce hook n'aurait jamais dû exister, car modifier un état impossible à consulter est une activité sans résultat.
 
+### `useNoChangeReducer<T>(initialValue: T): readonly [T, DispatchWithoutAction]`
+
+Crée un reducer dont le dispatch demande un changement, puis reprend exactement le même état.
+
+```ts
+function useNoChangeReducer<T>(
+  initialValue: T,
+): readonly [T, DispatchWithoutAction];
+```
+
+```tsx
+import { useNoChangeReducer } from "greact-hooks";
+
+const [value, refuseChange] = useNoChangeReducer("unchanged");
+refuseChange();
+```
+
+- **Paramètre :** `initialValue`, la valeur que le reducer refusera ensuite de modifier.
+- **Retour :** la valeur initiale et un dispatch stable qui ne change rien.
+- **Alternative raisonnable :** utiliser directement `initialValue` et ne proposer aucune action.
+
+Ce hook n'aurait jamais dû exister, car une commande incapable de produire le moindre changement est seulement une façon compliquée de ne rien faire.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

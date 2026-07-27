@@ -131,6 +131,7 @@
             <a href="#useSelfCount">useSelfCount</a>
             <a href="#useWasteCall">useWasteCall</a>
             <a href="#useSetterWithoutState">useSetterWithoutState</a>
+            <a href="#useNoChangeReducer">useNoChangeReducer</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -332,6 +333,19 @@ const firstResult = wasteCall(() =&gt; calculate());</code></pre>
               <pre><code>const setInvisibleState = useSetterWithoutState("hidden");
 setInvisibleState("still hidden");</code></pre>
               <p>A reasonable person would keep the state returned by <code>useState</code>, or do nothing. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useNoChangeReducer">
+              <header><span class="tag tag--new">New</span><h3>useNoChangeReducer&lt;T&gt;(initialValue)</h3></header>
+              <p>Creates a reducer whose dispatch asks for change and receives the exact same state back.</p>
+              <h4>Signature</h4>
+              <pre><code>useNoChangeReducer&lt;T&gt;(
+  initialValue: T,
+): readonly [T, DispatchWithoutAction];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [value, refuseChange] = useNoChangeReducer("unchanged");
+refuseChange();</code></pre>
+              <p>A reasonable person would use the initial value and offer no action. This hook should not exist.</p>
             </article>
           </div>
         </div>
