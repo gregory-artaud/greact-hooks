@@ -501,6 +501,29 @@ const firstResult = wasteCall(() => calculate());
 
 Ce hook n'aurait jamais dû exister, car refaire un travail uniquement pour jeter son résultat est strictement moins bien.
 
+### `useSetterWithoutState<T>(initialValue: T): Dispatch<SetStateAction<T>>`
+
+Crée un état React, jette sa valeur et ne conserve que le moyen de modifier cette valeur désormais invisible.
+
+```ts
+function useSetterWithoutState<T>(
+  initialValue: T,
+): Dispatch<SetStateAction<T>>;
+```
+
+```tsx
+import { useSetterWithoutState } from "greact-hooks";
+
+const setInvisibleState = useSetterWithoutState("hidden");
+setInvisibleState("still hidden");
+```
+
+- **Paramètre :** `initialValue`, la première valeur que personne ne pourra lire.
+- **Retour :** le setter stable d'un état volontairement inaccessible.
+- **Alternative raisonnable :** utiliser directement `useState` et garder la valeur, ou ne rien faire.
+
+Ce hook n'aurait jamais dû exister, car modifier un état impossible à consulter est une activité sans résultat.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

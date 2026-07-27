@@ -17,3 +17,4 @@ export * from "./use-transition-without-transition";
 export * from "./use-either-way";
 export * from "./use-self-count";
 export * from "./use-waste-call";
+export * from "./use-setter-without-state";

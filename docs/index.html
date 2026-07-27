@@ -130,6 +130,7 @@
             <a href="#useEitherWay">useEitherWay</a>
             <a href="#useSelfCount">useSelfCount</a>
             <a href="#useWasteCall">useWasteCall</a>
+            <a href="#useSetterWithoutState">useSetterWithoutState</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -318,6 +319,19 @@ const answer = chooseAnswer(false);</code></pre>
               <pre><code>const wasteCall = useWasteCall();
 const firstResult = wasteCall(() =&gt; calculate());</code></pre>
               <p>A reasonable person would call the callback once. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useSetterWithoutState">
+              <header><span class="tag tag--new">New</span><h3>useSetterWithoutState&lt;T&gt;(initialValue)</h3></header>
+              <p>Creates React state, throws away its value, and keeps only the means to update something nobody can read.</p>
+              <h4>Signature</h4>
+              <pre><code>useSetterWithoutState&lt;T&gt;(
+  initialValue: T,
+): Dispatch&lt;SetStateAction&lt;T&gt;&gt;;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const setInvisibleState = useSetterWithoutState("hidden");
+setInvisibleState("still hidden");</code></pre>
+              <p>A reasonable person would keep the state returned by <code>useState</code>, or do nothing. This hook should not exist.</p>
             </article>
           </div>
         </div>
