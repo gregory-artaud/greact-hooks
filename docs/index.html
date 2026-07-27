@@ -126,6 +126,7 @@
             <a href="#useEffectWithoutEffect">useEffectWithoutEffect</a>
             <a href="#useCallbackCallback">useCallbackCallback</a>
             <a href="#useTrueTrue">useTrueTrue</a>
+            <a href="#useTransitionWithoutTransition">useTransitionWithoutTransition</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -272,6 +273,16 @@ const value = refRef.current.current;</code></pre>
               <h4>Example</h4>
               <pre><code>const stillTrue = useTrueTrue();</code></pre>
               <p>A reasonable person would write <code>true</code>. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useTransitionWithoutTransition">
+              <header><span class="tag tag--new">New</span><h3>useTransitionWithoutTransition()</h3></header>
+              <p>Prepares a React transition, then discards the only function capable of starting it.</p>
+              <h4>Signature</h4>
+              <pre><code>useTransitionWithoutTransition(): boolean;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const isNothingPending = useTransitionWithoutTransition();</code></pre>
+              <p>A reasonable person would write <code>false</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>

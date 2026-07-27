@@ -419,6 +419,26 @@ const stillTrue = useTrueTrue();
 
 Ce hook n'aurait jamais dû exister, car le booléen était déjà vrai avant d'entrer dans React.
 
+### `useTransitionWithoutTransition(): boolean`
+
+Prépare une transition React, puis jette la fonction indispensable pour la démarrer.
+
+```ts
+function useTransitionWithoutTransition(): boolean;
+```
+
+```tsx
+import { useTransitionWithoutTransition } from "greact-hooks";
+
+const isNothingPending = useTransitionWithoutTransition();
+```
+
+- **Paramètres :** aucun.
+- **Retour :** `false`, puisqu'aucune transition ne peut être lancée.
+- **Alternative raisonnable :** écrire directement `false`.
+
+Ce hook n'aurait jamais dû exister, car une transition sans moyen de démarrer est seulement une attente qui n'arrivera pas.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
