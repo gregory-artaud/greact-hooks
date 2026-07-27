@@ -460,6 +460,26 @@ const answer = chooseAnswer(false);
 
 Ce hook n'aurait jamais dû exister, car demander un choix entre deux réponses identiques ne choisit rien.
 
+### `useSelfCount<T>(value: T): readonly [T, number]`
+
+Place une valeur dans une collection où elle est seule, puis compte combien de valeurs cette collection contient.
+
+```ts
+function useSelfCount<T>(value: T): readonly [T, number];
+```
+
+```tsx
+import { useSelfCount } from "greact-hooks";
+
+const [answer, occurrences] = useSelfCount("alone");
+```
+
+- **Paramètre :** `value`, la valeur placée toute seule pour faciliter exagérément le comptage.
+- **Retour :** la valeur et le nombre `1`, puisque la collection ne contient rien d'autre.
+- **Alternative raisonnable :** écrire directement `[value, 1]`.
+
+Ce hook n'aurait jamais dû exister, car compter l'unique élément d'une collection créée exprès ne produit aucune information.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

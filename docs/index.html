@@ -128,6 +128,7 @@
             <a href="#useTrueTrue">useTrueTrue</a>
             <a href="#useTransitionWithoutTransition">useTransitionWithoutTransition</a>
             <a href="#useEitherWay">useEitherWay</a>
+            <a href="#useSelfCount">useSelfCount</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -295,6 +296,16 @@ const value = refRef.current.current;</code></pre>
               <pre><code>const chooseAnswer = useEitherWay("same answer");
 const answer = chooseAnswer(false);</code></pre>
               <p>A reasonable person would use the value directly. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useSelfCount">
+              <header><span class="tag tag--new">New</span><h3>useSelfCount&lt;T&gt;(value)</h3></header>
+              <p>Puts a value in a collection by itself, then counts the unsurprising single occurrence.</p>
+              <h4>Signature</h4>
+              <pre><code>useSelfCount&lt;T&gt;(value: T): readonly [T, number];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [answer, occurrences] = useSelfCount("alone");</code></pre>
+              <p>A reasonable person would write <code>[value, 1]</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>
