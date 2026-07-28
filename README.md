@@ -567,6 +567,26 @@ const wrapped = useRefThenWrap("already available");
 
 Ce hook n'aurait jamais dû exister, car oublier une ref avant de fabriquer un objet ordinaire ne constitue pas une abstraction.
 
+### `useIdLength(): number`
+
+Demande un identifiant à React, le jette, puis retourne uniquement son nombre de caractères.
+
+```ts
+function useIdLength(): number;
+```
+
+```tsx
+import { useIdLength } from "greact-hooks";
+
+const discardedIdLength = useIdLength();
+```
+
+- **Paramètres :** aucun.
+- **Retour :** la longueur de l'identifiant React qui vient d'être rendu inaccessible.
+- **Alternative raisonnable :** écrire directement `useId().length` si cette information inutile est vraiment nécessaire.
+
+Ce hook n'aurait jamais dû exister, car compter un identifiant tout en refusant de le fournir est une abstraction sans objet.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

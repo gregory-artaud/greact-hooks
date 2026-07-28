@@ -133,6 +133,7 @@
             <a href="#useSetterWithoutState">useSetterWithoutState</a>
             <a href="#useNoChangeReducer">useNoChangeReducer</a>
             <a href="#useRefThenWrap">useRefThenWrap</a>
+            <a href="#useIdLength">useIdLength</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -350,13 +351,23 @@ refuseChange();</code></pre>
             </article>
 
             <article class="docs__item" id="useRefThenWrap">
-              <header><span class="tag tag--new">New</span><h3>useRefThenWrap&lt;T&gt;(value)</h3></header>
+              <header><span class="tag">Ref</span><h3>useRefThenWrap&lt;T&gt;(value)</h3></header>
               <p>Stores a value in a ref, ignores the ref, then wraps the current value in a fresh object.</p>
               <h4>Signature</h4>
               <pre><code>useRefThenWrap&lt;T&gt;(value: T): { value: T };</code></pre>
               <h4>Example</h4>
               <pre><code>const wrapped = useRefThenWrap("already available");</code></pre>
               <p>A reasonable person would write <code>{ value }</code>. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useIdLength">
+              <header><span class="tag tag--new">New</span><h3>useIdLength()</h3></header>
+              <p>Asks React for an identifier, discards it, and reports only how many characters disappeared.</p>
+              <h4>Signature</h4>
+              <pre><code>useIdLength(): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const discardedIdLength = useIdLength();</code></pre>
+              <p>A reasonable person would write <code>useId().length</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>
