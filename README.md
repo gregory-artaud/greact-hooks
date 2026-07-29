@@ -609,6 +609,29 @@ const [characters, pointlesslyRestored] = useSplitAndRejoin("hook");
 
 Ce hook n'aurait jamais dû exister, car découper une chaîne n'est pas un cycle de vie.
 
+### `useTypeTwice<T>(value: T): () => readonly [string, string]`
+
+Retourne un callback qui copie une valeur, vérifie que la copie est l'original, puis annonce deux fois son type déjà évident.
+
+```ts
+function useTypeTwice<T>(
+  value: T,
+): () => readonly [string, string];
+```
+
+```tsx
+import { useTypeTwice } from "greact-hooks";
+
+const reportTypeTwice = useTypeTwice("hook");
+const redundantTypes = reportTypeTwice();
+```
+
+- **Paramètre :** `value`, la valeur dont le type doit attendre un callback React.
+- **Retour :** une fonction qui retourne deux fois le résultat de `typeof value`.
+- **Alternative raisonnable :** écrire directement `typeof value`.
+
+Ce hook n'aurait jamais dû exister, car le type d'une valeur n'a besoin ni d'un rendez-vous ni d'un doublon.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

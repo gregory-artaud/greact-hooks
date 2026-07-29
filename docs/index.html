@@ -135,6 +135,7 @@
             <a href="#useRefThenWrap">useRefThenWrap</a>
             <a href="#useIdLength">useIdLength</a>
             <a href="#useSplitAndRejoin">useSplitAndRejoin</a>
+            <a href="#useTypeTwice">useTypeTwice</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -372,7 +373,7 @@ refuseChange();</code></pre>
             </article>
 
             <article class="docs__item" id="useSplitAndRejoin">
-              <header><span class="tag tag--new">New</span><h3>useSplitAndRejoin(value)</h3></header>
+              <header><span class="tag">Round trip</span><h3>useSplitAndRejoin(value)</h3></header>
               <p>Splits a string into characters, then rejoins them to recover the string it was given.</p>
               <h4>Signature</h4>
               <pre><code>useSplitAndRejoin(
@@ -382,6 +383,19 @@ refuseChange();</code></pre>
               <pre><code>const [characters, pointlesslyRestored] =
   useSplitAndRejoin("hook");</code></pre>
               <p>A reasonable person would use <code>value</code> and <code>[...value]</code> directly. This hook should not exist because splitting a string is not a lifecycle.</p>
+            </article>
+
+            <article class="docs__item" id="useTypeTwice">
+              <header><span class="tag tag--new">New</span><h3>useTypeTwice&lt;T&gt;(value)</h3></header>
+              <p>Copies a value, confirms the copy is the original, then reports the same obvious type twice through a callback.</p>
+              <h4>Signature</h4>
+              <pre><code>useTypeTwice&lt;T&gt;(
+  value: T,
+): () =&gt; readonly [string, string];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const reportTypeTwice = useTypeTwice("hook");
+const redundantTypes = reportTypeTwice();</code></pre>
+              <p>A reasonable person would write <code>typeof value</code>. This hook should not exist because a type needs neither an appointment nor a duplicate.</p>
             </article>
           </div>
         </div>

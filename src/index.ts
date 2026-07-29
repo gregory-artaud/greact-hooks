@@ -22,3 +22,4 @@ export * from "./use-no-change-reducer";
 export * from "./use-ref-then-wrap";
 export * from "./use-id-length";
 export * from "./use-split-and-rejoin";
+export * from "./use-type-twice";
