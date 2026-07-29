@@ -587,6 +587,28 @@ const discardedIdLength = useIdLength();
 
 Ce hook n'aurait jamais dû exister, car compter un identifiant tout en refusant de le fournir est une abstraction sans objet.
 
+### `useSplitAndRejoin(value: string): readonly [readonly string[], string]`
+
+Découpe une chaîne en caractères, puis les rejoint pour récupérer la chaîne déjà fournie.
+
+```ts
+function useSplitAndRejoin(
+  value: string,
+): readonly [readonly string[], string];
+```
+
+```tsx
+import { useSplitAndRejoin } from "greact-hooks";
+
+const [characters, pointlesslyRestored] = useSplitAndRejoin("hook");
+```
+
+- **Paramètre :** `value`, la chaîne que React doit superviser pendant qu'elle devient brièvement des caractères.
+- **Retour :** ces caractères et la même chaîne reconstruite à partir d'eux.
+- **Alternative raisonnable :** utiliser directement `value` et `[...value]`.
+
+Ce hook n'aurait jamais dû exister, car découper une chaîne n'est pas un cycle de vie.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

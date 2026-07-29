@@ -134,6 +134,7 @@
             <a href="#useNoChangeReducer">useNoChangeReducer</a>
             <a href="#useRefThenWrap">useRefThenWrap</a>
             <a href="#useIdLength">useIdLength</a>
+            <a href="#useSplitAndRejoin">useSplitAndRejoin</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -361,13 +362,26 @@ refuseChange();</code></pre>
             </article>
 
             <article class="docs__item" id="useIdLength">
-              <header><span class="tag tag--new">New</span><h3>useIdLength()</h3></header>
+              <header><span class="tag">Identifier</span><h3>useIdLength()</h3></header>
               <p>Asks React for an identifier, discards it, and reports only how many characters disappeared.</p>
               <h4>Signature</h4>
               <pre><code>useIdLength(): number;</code></pre>
               <h4>Example</h4>
               <pre><code>const discardedIdLength = useIdLength();</code></pre>
               <p>A reasonable person would write <code>useId().length</code>. This hook should not exist.</p>
+            </article>
+
+            <article class="docs__item" id="useSplitAndRejoin">
+              <header><span class="tag tag--new">New</span><h3>useSplitAndRejoin(value)</h3></header>
+              <p>Splits a string into characters, then rejoins them to recover the string it was given.</p>
+              <h4>Signature</h4>
+              <pre><code>useSplitAndRejoin(
+  value: string,
+): readonly [readonly string[], string];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [characters, pointlesslyRestored] =
+  useSplitAndRejoin("hook");</code></pre>
+              <p>A reasonable person would use <code>value</code> and <code>[...value]</code> directly. This hook should not exist because splitting a string is not a lifecycle.</p>
             </article>
           </div>
         </div>
