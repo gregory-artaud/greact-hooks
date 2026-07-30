@@ -136,6 +136,7 @@
             <a href="#useIdLength">useIdLength</a>
             <a href="#useSplitAndRejoin">useSplitAndRejoin</a>
             <a href="#useTypeTwice">useTypeTwice</a>
+            <a href="#usePlusOneProof">usePlusOneProof</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -386,7 +387,7 @@ refuseChange();</code></pre>
             </article>
 
             <article class="docs__item" id="useTypeTwice">
-              <header><span class="tag tag--new">New</span><h3>useTypeTwice&lt;T&gt;(value)</h3></header>
+              <header><span class="tag">Type</span><h3>useTypeTwice&lt;T&gt;(value)</h3></header>
               <p>Copies a value, confirms the copy is the original, then reports the same obvious type twice through a callback.</p>
               <h4>Signature</h4>
               <pre><code>useTypeTwice&lt;T&gt;(
@@ -396,6 +397,19 @@ refuseChange();</code></pre>
               <pre><code>const reportTypeTwice = useTypeTwice("hook");
 const redundantTypes = reportTypeTwice();</code></pre>
               <p>A reasonable person would write <code>typeof value</code>. This hook should not exist because a type needs neither an appointment nor a duplicate.</p>
+            </article>
+
+            <article class="docs__item" id="usePlusOneProof">
+              <header><span class="tag tag--new">New</span><h3>usePlusOneProof(value)</h3></header>
+              <p>Adds one to a number, then returns the one as unnecessary proof of the visible arithmetic.</p>
+              <h4>Signature</h4>
+              <pre><code>usePlusOneProof(
+  value: number,
+): readonly [number, 1];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [incremented, unnecessaryProof] =
+  usePlusOneProof(4);</code></pre>
+              <p>A reasonable person would write <code>value + 1</code>. This hook should not exist because addition does not need to issue its own receipt.</p>
             </article>
           </div>
         </div>

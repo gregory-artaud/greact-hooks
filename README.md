@@ -632,6 +632,26 @@ const redundantTypes = reportTypeTwice();
 
 Ce hook n'aurait jamais dû exister, car le type d'une valeur n'a besoin ni d'un rendez-vous ni d'un doublon.
 
+### `usePlusOneProof(value: number): readonly [number, 1]`
+
+Ajoute `1` à un nombre, puis retourne aussi le `1` comme preuve inutile de l'opération.
+
+```ts
+function usePlusOneProof(value: number): readonly [number, 1];
+```
+
+```tsx
+import { usePlusOneProof } from "greact-hooks";
+
+const [incremented, unnecessaryProof] = usePlusOneProof(4);
+```
+
+- **Paramètre :** `value`, le nombre qui pouvait être incrémenté sans supervision de React.
+- **Retour :** `value + 1` et le littéral `1` qui révèle exactement comment revenir en arrière.
+- **Alternative raisonnable :** écrire directement `value + 1`.
+
+Ce hook n'aurait jamais dû exister, car une addition n'a pas besoin de fournir sa propre pièce justificative.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
