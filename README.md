@@ -652,6 +652,26 @@ const [incremented, unnecessaryProof] = usePlusOneProof(4);
 
 Ce hook n'aurait jamais dû exister, car une addition n'a pas besoin de fournir sa propre pièce justificative.
 
+### `useFirstBackwards<T>(values: readonly T[]): T | undefined`
+
+Copie un tableau, l'inverse, puis prend son dernier élément pour retrouver le premier élément original.
+
+```ts
+function useFirstBackwards<T>(values: readonly T[]): T | undefined;
+```
+
+```tsx
+import { useFirstBackwards } from "greact-hooks";
+
+const firstAfterDetour = useFirstBackwards(["first", "second", "third"]);
+```
+
+- **Paramètre :** `values`, le tableau qui doit faire demi-tour avant de livrer son premier élément.
+- **Retour :** le premier élément de `values`, ou `undefined` si le tableau est vide.
+- **Alternative raisonnable :** écrire directement `values[0]`.
+
+Ce hook n'aurait jamais dû exister, car le début d'un tableau n'est pas plus accessible depuis sa copie inversée.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -137,6 +137,7 @@
             <a href="#useSplitAndRejoin">useSplitAndRejoin</a>
             <a href="#useTypeTwice">useTypeTwice</a>
             <a href="#usePlusOneProof">usePlusOneProof</a>
+            <a href="#useFirstBackwards">useFirstBackwards</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -400,7 +401,7 @@ const redundantTypes = reportTypeTwice();</code></pre>
             </article>
 
             <article class="docs__item" id="usePlusOneProof">
-              <header><span class="tag tag--new">New</span><h3>usePlusOneProof(value)</h3></header>
+              <header><span class="tag">Arithmetic</span><h3>usePlusOneProof(value)</h3></header>
               <p>Adds one to a number, then returns the one as unnecessary proof of the visible arithmetic.</p>
               <h4>Signature</h4>
               <pre><code>usePlusOneProof(
@@ -410,6 +411,19 @@ const redundantTypes = reportTypeTwice();</code></pre>
               <pre><code>const [incremented, unnecessaryProof] =
   usePlusOneProof(4);</code></pre>
               <p>A reasonable person would write <code>value + 1</code>. This hook should not exist because addition does not need to issue its own receipt.</p>
+            </article>
+
+            <article class="docs__item" id="useFirstBackwards">
+              <header><span class="tag tag--new">New</span><h3>useFirstBackwards&lt;T&gt;(values)</h3></header>
+              <p>Copies and reverses an array, then reads its end to recover the original beginning.</p>
+              <h4>Signature</h4>
+              <pre><code>useFirstBackwards&lt;T&gt;(
+  values: readonly T[],
+): T | undefined;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const firstAfterDetour =
+  useFirstBackwards(["first", "second", "third"]);</code></pre>
+              <p>A reasonable person would write <code>values[0]</code>. This hook should not exist because an array need not reverse before admitting how it starts.</p>
             </article>
           </div>
         </div>

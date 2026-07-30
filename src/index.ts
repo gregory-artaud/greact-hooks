@@ -24,3 +24,4 @@ export * from "./use-id-length";
 export * from "./use-split-and-rejoin";
 export * from "./use-type-twice";
 export * from "./use-plus-one-proof";
+export * from "./use-first-backwards";
