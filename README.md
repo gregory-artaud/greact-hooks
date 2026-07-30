@@ -672,6 +672,28 @@ const firstAfterDetour = useFirstBackwards(["first", "second", "third"]);
 
 Ce hook n'aurait jamais dû exister, car le début d'un tableau n'est pas plus accessible depuis sa copie inversée.
 
+### `useAfterLast<T>(values: readonly T[]): readonly [number, T | undefined]`
+
+Compte un tableau, puis lit l'élément situé juste après sa fin pour confirmer l'absence déjà garantie.
+
+```ts
+function useAfterLast<T>(
+  values: readonly T[],
+): readonly [number, T | undefined];
+```
+
+```tsx
+import { useAfterLast } from "greact-hooks";
+
+const [count, predictablyMissing] = useAfterLast(["first", "second"]);
+```
+
+- **Paramètre :** `values`, le tableau dont la fin doit être dépassée avec précision.
+- **Retour :** sa longueur et l'élément à cet index, donc `undefined`.
+- **Alternative raisonnable :** utiliser directement `values.length` et ne pas lire après la fin.
+
+Ce hook n'aurait jamais dû exister, car connaître la fin d'un tableau suffit pour ne pas la dépasser.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
