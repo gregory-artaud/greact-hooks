@@ -714,6 +714,30 @@ const result = useCallbackNow(() => "déjà disponible");
 
 Ce hook n'aurait jamais dû exister, car mémoriser l'avenir ne sert à rien quand on l'exécute tout de suite.
 
+### `useReadThenErase<T>(value: T): { readonly value: T | undefined }`
+
+Retourne la valeur lors de la première lecture de la propriété, puis efface cette réponse.
+
+```ts
+function useReadThenErase<T>(
+  value: T,
+): { readonly value: T | undefined };
+```
+
+```tsx
+import { useReadThenErase } from "greact-hooks";
+
+const answer = useReadThenErase("déjà disponible");
+const firstRead = answer.value;
+const secondRead = answer.value;
+```
+
+- **Paramètre :** `value`, la valeur qui n'avait besoin que d'être lue.
+- **Retour :** un objet dont `value` fournit `value` une fois, puis `undefined`.
+- **Alternative raisonnable :** utiliser directement `value`.
+
+Ce hook n'aurait jamais dû exister, car une propriété n'a aucune raison de s'autodétruire après avoir répondu.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
