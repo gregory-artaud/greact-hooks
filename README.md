@@ -759,6 +759,26 @@ const loud = useLowerThenUpper("MiXeD"); // "MIXED"
 
 Ce hook n'aurait jamais dû exister, car React n'améliore pas une transformation de chaîne en la regardant faire un détour.
 
+### `usePopThenPeek<T>(values: readonly T[]): T | undefined`
+
+Copie un tableau uniquement pour en retirer le dernier élément et vous le rendre.
+
+```ts
+function usePopThenPeek<T>(values: readonly T[]): T | undefined;
+```
+
+```tsx
+import { usePopThenPeek } from "greact-hooks";
+
+const last = usePopThenPeek(["first", "last"]); // "last"
+```
+
+- **Paramètre :** `values`, le tableau à copier avant de lui retirer son dernier élément.
+- **Retour :** le dernier élément de `values`, ou `undefined` si le tableau est vide.
+- **Alternative raisonnable :** utiliser directement `values.at(-1)`.
+
+Ce hook n'aurait jamais dû exister, car copier un tableau avant de jeter son dernier élément n'améliore pas sa lecture.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

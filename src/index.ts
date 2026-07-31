@@ -29,3 +29,4 @@ export * from "./use-after-last";
 export * from "./use-callback-now";
 export * from "./use-read-then-erase";
 export * from "./use-lower-then-upper";
+export * from "./use-pop-then-peek";

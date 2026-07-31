@@ -141,6 +141,8 @@
             <a href="#useAfterLast">useAfterLast</a>
             <a href="#useCallbackNow">useCallbackNow</a>
             <a href="#useReadThenErase">useReadThenErase</a>
+            <a href="#useLowerThenUpper">useLowerThenUpper</a>
+            <a href="#usePopThenPeek">usePopThenPeek</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -470,7 +472,7 @@ const secondRead = answer.value;</code></pre>
             </article>
 
             <article class="docs__item" id="useLowerThenUpper">
-              <header><span class="tag tag--new">New</span><h3>useLowerThenUpper(value)</h3></header>
+              <header><span class="tag">Transform</span><h3>useLowerThenUpper(value)</h3></header>
               <p>Lowercases a string, then immediately uppercases the result.</p>
               <h4>Signature</h4>
               <pre><code>useLowerThenUpper(value: string): string;</code></pre>
@@ -478,6 +480,16 @@ const secondRead = answer.value;</code></pre>
               <pre><code>const loud = useLowerThenUpper("MiXeD");
 // "MIXED"</code></pre>
               <p>A reasonable person would write <code>value.toLowerCase().toUpperCase()</code>. This hook should not exist because React does not improve a string transformation by watching its unnecessary detour.</p>
+            </article>
+
+            <article class="docs__item" id="usePopThenPeek">
+              <header><span class="tag tag--new">New</span><h3>usePopThenPeek&lt;T&gt;(values)</h3></header>
+              <p>Copies a list solely to remove and return its last item.</p>
+              <h4>Signature</h4>
+              <pre><code>usePopThenPeek&lt;T&gt;(values: readonly T[]): T | undefined;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const last = usePopThenPeek(["first", "last"]);</code></pre>
+              <p>A reasonable person would use <code>values.at(-1)</code>. This hook should not exist because copying a list before throwing away its last item adds nothing.</p>
             </article>
           </div>
         </div>
