@@ -738,6 +738,27 @@ const secondRead = answer.value;
 
 Ce hook n'aurait jamais dû exister, car une propriété n'a aucune raison de s'autodétruire après avoir répondu.
 
+### `useLowerThenUpper(value: string): string`
+
+Transforme une chaîne en minuscules, puis transforme immédiatement le résultat en majuscules.
+Une personne raisonnable écrirait directement `value.toLowerCase().toUpperCase()`.
+
+```ts
+function useLowerThenUpper(value: string): string;
+```
+
+```tsx
+import { useLowerThenUpper } from "greact-hooks";
+
+const loud = useLowerThenUpper("MiXeD"); // "MIXED"
+```
+
+- **Paramètre :** `value`, la chaîne à faire passer par deux transformations de casse.
+- **Retour :** la chaîne mise en minuscules puis en majuscules.
+- **Alternative raisonnable :** écrire directement `value.toLowerCase().toUpperCase()`.
+
+Ce hook n'aurait jamais dû exister, car React n'améliore pas une transformation de chaîne en la regardant faire un détour.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -456,7 +456,7 @@ const redundantTypes = reportTypeTwice();</code></pre>
             </article>
 
             <article class="docs__item" id="useReadThenErase">
-              <header><span class="tag tag--new">New</span><h3>useReadThenErase&lt;T&gt;(value)</h3></header>
+              <header><span class="tag">Object</span><h3>useReadThenErase&lt;T&gt;(value)</h3></header>
               <p>Returns a value once through a property, then erases the answer it just gave.</p>
               <h4>Signature</h4>
               <pre><code>useReadThenErase&lt;T&gt;(
@@ -467,6 +467,17 @@ const redundantTypes = reportTypeTwice();</code></pre>
 const firstRead = answer.value;
 const secondRead = answer.value;</code></pre>
               <p>A reasonable person would use <code>value</code> directly. This hook should not exist because a property should not destroy its own answer.</p>
+            </article>
+
+            <article class="docs__item" id="useLowerThenUpper">
+              <header><span class="tag tag--new">New</span><h3>useLowerThenUpper(value)</h3></header>
+              <p>Lowercases a string, then immediately uppercases the result.</p>
+              <h4>Signature</h4>
+              <pre><code>useLowerThenUpper(value: string): string;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const loud = useLowerThenUpper("MiXeD");
+// "MIXED"</code></pre>
+              <p>A reasonable person would write <code>value.toLowerCase().toUpperCase()</code>. This hook should not exist because React does not improve a string transformation by watching its unnecessary detour.</p>
             </article>
           </div>
         </div>
