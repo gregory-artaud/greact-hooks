@@ -694,6 +694,26 @@ const [count, predictablyMissing] = useAfterLast(["first", "second"]);
 
 Ce hook n'aurait jamais dû exister, car connaître la fin d'un tableau suffit pour ne pas la dépasser.
 
+### `useCallbackNow<T>(callback: () => T): T`
+
+Mémorise un callback pour plus tard, puis l'appelle immédiatement.
+
+```ts
+function useCallbackNow<T>(callback: () => T): T;
+```
+
+```tsx
+import { useCallbackNow } from "greact-hooks";
+
+const result = useCallbackNow(() => "déjà disponible");
+```
+
+- **Paramètre :** `callback`, la fonction qui n'aura finalement pas à attendre.
+- **Retour :** le résultat immédiat de `callback`.
+- **Alternative raisonnable :** appeler directement `callback()`.
+
+Ce hook n'aurait jamais dû exister, car mémoriser l'avenir ne sert à rien quand on l'exécute tout de suite.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

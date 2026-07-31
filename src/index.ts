@@ -26,3 +26,4 @@ export * from "./use-type-twice";
 export * from "./use-plus-one-proof";
 export * from "./use-first-backwards";
 export * from "./use-after-last";
+export * from "./use-callback-now";

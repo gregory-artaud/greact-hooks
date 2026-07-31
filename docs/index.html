@@ -139,6 +139,7 @@
             <a href="#usePlusOneProof">usePlusOneProof</a>
             <a href="#useFirstBackwards">useFirstBackwards</a>
             <a href="#useAfterLast">useAfterLast</a>
+            <a href="#useCallbackNow">useCallbackNow</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -428,7 +429,7 @@ const redundantTypes = reportTypeTwice();</code></pre>
             </article>
 
             <article class="docs__item" id="useAfterLast">
-              <header><span class="tag tag--new">New</span><h3>useAfterLast&lt;T&gt;(values)</h3></header>
+              <header><span class="tag">Boundary</span><h3>useAfterLast&lt;T&gt;(values)</h3></header>
               <p>Counts an array, then reads the element immediately after its end to confirm the guaranteed absence.</p>
               <h4>Signature</h4>
               <pre><code>useAfterLast&lt;T&gt;(
@@ -438,6 +439,19 @@ const redundantTypes = reportTypeTwice();</code></pre>
               <pre><code>const [count, predictablyMissing] =
   useAfterLast(["first", "second"]);</code></pre>
               <p>A reasonable person would use <code>values.length</code> and not read past the end. This hook should not exist because knowing where an array ends is enough reason to stop.</p>
+            </article>
+
+            <article class="docs__item" id="useCallbackNow">
+              <header><span class="tag tag--new">New</span><h3>useCallbackNow&lt;T&gt;(callback)</h3></header>
+              <p>Memoizes a callback for later, then calls it immediately.</p>
+              <h4>Signature</h4>
+              <pre><code>useCallbackNow&lt;T&gt;(
+  callback: () =&gt; T,
+): T;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const result =
+  useCallbackNow(() =&gt; "already available");</code></pre>
+              <p>A reasonable person would call <code>callback()</code>. This hook should not exist because a callback needs no future when it is executed now.</p>
             </article>
           </div>
         </div>
