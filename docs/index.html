@@ -143,6 +143,7 @@
             <a href="#useReadThenErase">useReadThenErase</a>
             <a href="#useLowerThenUpper">useLowerThenUpper</a>
             <a href="#usePopThenPeek">usePopThenPeek</a>
+            <a href="#useCeilThenFloor">useCeilThenFloor</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -483,13 +484,24 @@ const secondRead = answer.value;</code></pre>
             </article>
 
             <article class="docs__item" id="usePopThenPeek">
-              <header><span class="tag tag--new">New</span><h3>usePopThenPeek&lt;T&gt;(values)</h3></header>
+              <header><span class="tag">Collection</span><h3>usePopThenPeek&lt;T&gt;(values)</h3></header>
               <p>Copies a list solely to remove and return its last item.</p>
               <h4>Signature</h4>
               <pre><code>usePopThenPeek&lt;T&gt;(values: readonly T[]): T | undefined;</code></pre>
               <h4>Example</h4>
               <pre><code>const last = usePopThenPeek(["first", "last"]);</code></pre>
               <p>A reasonable person would use <code>values.at(-1)</code>. This hook should not exist because copying a list before throwing away its last item adds nothing.</p>
+            </article>
+
+            <article class="docs__item" id="useCeilThenFloor">
+              <header><span class="tag tag--new">New</span><h3>useCeilThenFloor(value)</h3></header>
+              <p>Rounds a number up, then immediately rounds that result down.</p>
+              <h4>Signature</h4>
+              <pre><code>useCeilThenFloor(value: number): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const rounded = useCeilThenFloor(1.2);
+// 2</code></pre>
+              <p>A reasonable person would use <code>Math.ceil(value)</code>. This hook should not exist because two rounding steps are not made meaningful by involving React.</p>
             </article>
           </div>
         </div>

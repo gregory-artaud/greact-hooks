@@ -779,6 +779,26 @@ const last = usePopThenPeek(["first", "last"]); // "last"
 
 Ce hook n'aurait jamais dû exister, car copier un tableau avant de jeter son dernier élément n'améliore pas sa lecture.
 
+### `useCeilThenFloor(value: number): number`
+
+Arrondit un nombre vers le haut, puis arrondit immédiatement le résultat vers le bas. Cela revient exactement à `Math.ceil(value)`.
+
+```ts
+function useCeilThenFloor(value: number): number;
+```
+
+```tsx
+import { useCeilThenFloor } from "greact-hooks";
+
+const rounded = useCeilThenFloor(1.2); // 2
+```
+
+- **Paramètre :** `value`, le nombre à faire passer par deux arrondis incompatibles mais redondants.
+- **Retour :** le résultat de `Math.floor(Math.ceil(value))`.
+- **Alternative raisonnable :** écrire directement `Math.ceil(value)`.
+
+Ce hook n'aurait jamais dû exister, car arrondir deux fois ne devient pas plus utile parce que React est présent.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
