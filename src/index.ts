@@ -31,3 +31,4 @@ export * from "./use-read-then-erase";
 export * from "./use-lower-then-upper";
 export * from "./use-pop-then-peek";
 export * from "./use-ceil-then-floor";
+export * from "./use-callback-with-nothing";

@@ -799,6 +799,29 @@ const rounded = useCeilThenFloor(1.2); // 2
 
 Ce hook n'aurait jamais dû exister, car arrondir deux fois ne devient pas plus utile parce que React est présent.
 
+### `useCallbackWithNothing<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => readonly [Return, undefined]`
+
+Appelle un callback, puis range son résultat à côté de `undefined` dans un tuple. Le vide est fourni avec une rigueur mémoïsée.
+
+```ts
+function useCallbackWithNothing<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => readonly [Return, undefined];
+```
+
+```tsx
+import { useCallbackWithNothing } from "greact-hooks";
+
+const getResultAndNothing = useCallbackWithNothing(() => "résultat");
+const [result, nothing] = getResultAndNothing(); // "résultat", undefined
+```
+
+- **Paramètre :** `callback`, la fonction à appeler plus tard.
+- **Retour :** une fonction mémoïsée qui renvoie le résultat du callback et `undefined`.
+- **Alternative raisonnable :** appeler directement le callback, ou utiliser `useCallback` sans ajouter le tuple.
+
+Ce hook n'aurait jamais dû exister, car ajouter une case vide à un résultat ne crée pas une information.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
