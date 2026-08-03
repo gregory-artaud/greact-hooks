@@ -842,6 +842,26 @@ const result = useEraseThenReverse("abcd"); // "cba"
 
 Ce hook n'aurait jamais dû exister, car une découpe et une inversion ne deviennent pas une responsabilité React.
 
+### `useNegativeUnlessZero(value: number): { readonly value: number }`
+
+Inverse un nombre sauf quand il vaut zéro, puis range le résultat dans un objet dont personne n'avait besoin.
+
+```ts
+function useNegativeUnlessZero(value: number): { readonly value: number };
+```
+
+```tsx
+import { useNegativeUnlessZero } from "greact-hooks";
+
+const result = useNegativeUnlessZero(4); // { value: -4 }
+```
+
+- **Paramètre :** `value`, le nombre qui doit subir une inversion conditionnelle.
+- **Retour :** un objet mémorisé contenant `value` inchangé pour zéro, ou son opposé dans les autres cas.
+- **Alternative raisonnable :** écrire directement `{ value: value === 0 ? value : -value }`.
+
+Ce hook n'aurait jamais dû exister, car une négation conditionnelle n'a besoin ni de React ni d'un objet cérémoniel.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

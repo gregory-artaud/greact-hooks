@@ -146,6 +146,7 @@
             <a href="#useCeilThenFloor">useCeilThenFloor</a>
             <a href="#useCallbackWithNothing">useCallbackWithNothing</a>
             <a href="#useEraseThenReverse">useEraseThenReverse</a>
+            <a href="#useNegativeUnlessZero">useNegativeUnlessZero</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -520,7 +521,7 @@ const [result, nothing] = getResultAndNothing();</code></pre>
             </article>
 
             <article class="docs__item" id="useEraseThenReverse">
-              <header><span class="tag tag--new">New</span><h3>useEraseThenReverse(value)</h3></header>
+              <header><span class="tag">Round trip</span><h3>useEraseThenReverse(value)</h3></header>
               <p>Retire le dernier caractère, puis inverse le reste. React n'améliore pas cette marche arrière.</p>
               <h4>Signature</h4>
               <pre><code>useEraseThenReverse(value: string): string;</code></pre>
@@ -528,6 +529,17 @@ const [result, nothing] = getResultAndNothing();</code></pre>
               <pre><code>const result = useEraseThenReverse("abcd");
 // "cba"</code></pre>
               <p>Une personne raisonnable écrirait <code>value.slice(0, -1).split("").reverse().join("")</code>. Ce hook n'aurait jamais dû exister.</p>
+            </article>
+
+            <article class="docs__item" id="useNegativeUnlessZero">
+              <header><span class="tag tag--new">New</span><h3>useNegativeUnlessZero(value)</h3></header>
+              <p>Inverse un nombre sauf zéro, puis range le résultat dans un objet pour que la négation ait un détour React.</p>
+              <h4>Signature</h4>
+              <pre><code>useNegativeUnlessZero(value: number): { readonly value: number };</code></pre>
+              <h4>Example</h4>
+              <pre><code>const result = useNegativeUnlessZero(4);
+// { value: -4 }</code></pre>
+              <p>A reasonable person would write <code>{ value: value === 0 ? value : -value }</code>. This hook should not exist.</p>
             </article>
           </div>
         </div>
