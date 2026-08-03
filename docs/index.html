@@ -145,6 +145,7 @@
             <a href="#usePopThenPeek">usePopThenPeek</a>
             <a href="#useCeilThenFloor">useCeilThenFloor</a>
             <a href="#useCallbackWithNothing">useCallbackWithNothing</a>
+            <a href="#useEraseThenReverse">useEraseThenReverse</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -506,7 +507,7 @@ const secondRead = answer.value;</code></pre>
             </article>
 
             <article class="docs__item" id="useCallbackWithNothing">
-              <header><span class="tag tag--new">New</span><h3>useCallbackWithNothing(callback)</h3></header>
+              <header><span class="tag">Callback</span><h3>useCallbackWithNothing(callback)</h3></header>
               <p>Calls a callback and places its result beside <code>undefined</code> in a memoized tuple.</p>
               <h4>Signature</h4>
               <pre><code>useCallbackWithNothing&lt;Args extends unknown[], Return&gt;(
@@ -516,6 +517,17 @@ const secondRead = answer.value;</code></pre>
               <pre><code>const getResultAndNothing = useCallbackWithNothing(() =&gt; "result");
 const [result, nothing] = getResultAndNothing();</code></pre>
               <p>A reasonable person would call the callback directly, or use <code>useCallback</code> without the empty tuple slot. This hook should not exist because <code>undefined</code> is not additional information.</p>
+            </article>
+
+            <article class="docs__item" id="useEraseThenReverse">
+              <header><span class="tag tag--new">New</span><h3>useEraseThenReverse(value)</h3></header>
+              <p>Retire le dernier caractère, puis inverse le reste. React n'améliore pas cette marche arrière.</p>
+              <h4>Signature</h4>
+              <pre><code>useEraseThenReverse(value: string): string;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const result = useEraseThenReverse("abcd");
+// "cba"</code></pre>
+              <p>Une personne raisonnable écrirait <code>value.slice(0, -1).split("").reverse().join("")</code>. Ce hook n'aurait jamais dû exister.</p>
             </article>
           </div>
         </div>

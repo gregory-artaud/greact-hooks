@@ -822,6 +822,26 @@ const [result, nothing] = getResultAndNothing(); // "résultat", undefined
 
 Ce hook n'aurait jamais dû exister, car ajouter une case vide à un résultat ne crée pas une information.
 
+### `useEraseThenReverse(value: string): string`
+
+Supprime le dernier caractère d'une chaîne, puis inverse tout ce qui reste. React supervise cette petite marche arrière sans raison.
+
+```ts
+function useEraseThenReverse(value: string): string;
+```
+
+```tsx
+import { useEraseThenReverse } from "greact-hooks";
+
+const result = useEraseThenReverse("abcd"); // "cba"
+```
+
+- **Paramètre :** `value`, la chaîne à raccourcir et à inverser.
+- **Retour :** la chaîne privée de son dernier caractère, puis renversée.
+- **Alternative raisonnable :** écrire directement `value.slice(0, -1).split("").reverse().join("")`.
+
+Ce hook n'aurait jamais dû exister, car une découpe et une inversion ne deviennent pas une responsabilité React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
