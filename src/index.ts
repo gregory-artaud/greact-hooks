@@ -34,3 +34,4 @@ export * from "./use-ceil-then-floor";
 export * from "./use-callback-with-nothing";
 export * from "./use-erase-then-reverse";
 export * from "./use-negative-unless-zero";
+export * from "./use-array-then-object";

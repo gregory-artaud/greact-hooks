@@ -862,6 +862,26 @@ const result = useNegativeUnlessZero(4); // { value: -4 }
 
 Ce hook n'aurait jamais dû exister, car une négation conditionnelle n'a besoin ni de React ni d'un objet cérémoniel.
 
+### `useArrayThenObject<T>(value: T): { readonly value: T }`
+
+Range une valeur dans un tableau à une case, la récupère immédiatement, puis la range encore dans un objet.
+
+```ts
+function useArrayThenObject<T>(value: T): { readonly value: T };
+```
+
+```tsx
+import { useArrayThenObject } from "greact-hooks";
+
+const result = useArrayThenObject("déjà disponible"); // { value: "déjà disponible" }
+```
+
+- **Paramètre :** `value`, la valeur à faire passer par un tableau inutile.
+- **Retour :** un nouvel objet contenant la valeur récupérée du tableau.
+- **Alternative raisonnable :** écrire directement `{ value }`.
+
+Ce hook n'aurait jamais dû exister, car un tableau intermédiaire ne devient pas une abstraction parce qu'il est suivi d'un objet.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
