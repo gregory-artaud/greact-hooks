@@ -882,6 +882,26 @@ const result = useArrayThenObject("déjà disponible"); // { value: "déjà disp
 
 Ce hook n'aurait jamais dû exister, car un tableau intermédiaire ne devient pas une abstraction parce qu'il est suivi d'un objet.
 
+### `useIdFirstCharacter(): string`
+
+Demande à React un identifiant, puis conserve uniquement son premier caractère.
+
+```ts
+function useIdFirstCharacter(): string;
+```
+
+```tsx
+import { useIdFirstCharacter } from "greact-hooks";
+
+const firstCharacter = useIdFirstCharacter(); // ":"
+```
+
+- **Paramètre :** aucun.
+- **Retour :** le premier caractère de l'identifiant généré par React.
+- **Alternative raisonnable :** écrire directement `useId().slice(0, 1)`.
+
+Ce hook n'aurait jamais dû exister, car jeter presque tout un identifiant ne devient pas une abstraction utile.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -148,6 +148,7 @@
             <a href="#useEraseThenReverse">useEraseThenReverse</a>
             <a href="#useNegativeUnlessZero">useNegativeUnlessZero</a>
             <a href="#useArrayThenObject">useArrayThenObject</a>
+            <a href="#useIdFirstCharacter">useIdFirstCharacter</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -544,7 +545,7 @@ const [result, nothing] = getResultAndNothing();</code></pre>
             </article>
 
             <article class="docs__item" id="useArrayThenObject">
-              <header><span class="tag tag--new">New</span><h3>useArrayThenObject(value)</h3></header>
+              <header><span class="tag">Object</span><h3>useArrayThenObject(value)</h3></header>
               <p>Places a value in a one-item array, retrieves it immediately, then places it in an object.</p>
               <h4>Signature</h4>
               <pre><code>useArrayThenObject&lt;T&gt;(value: T): { readonly value: T };</code></pre>
@@ -552,6 +553,17 @@ const [result, nothing] = getResultAndNothing();</code></pre>
               <pre><code>const result = useArrayThenObject("already available");
 // { value: "already available" }</code></pre>
               <p>A reasonable person would write <code>{value}</code>. This hook should not exist because the array adds no information.</p>
+            </article>
+
+            <article class="docs__item" id="useIdFirstCharacter">
+              <header><span class="tag tag--new">New</span><h3>useIdFirstCharacter()</h3></header>
+              <p>Asks React for an identifier, then keeps only its first character.</p>
+              <h4>Signature</h4>
+              <pre><code>useIdFirstCharacter(): string;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const firstCharacter = useIdFirstCharacter();
+// ":"</code></pre>
+              <p>A reasonable person would write <code>useId().slice(0, 1)</code>. This hook should not exist because discarding almost an entire identifier is not an abstraction.</p>
             </article>
           </div>
         </div>
