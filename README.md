@@ -902,6 +902,29 @@ const firstCharacter = useIdFirstCharacter(); // ":"
 
 Ce hook n'aurait jamais dû exister, car jeter presque tout un identifiant ne devient pas une abstraction utile.
 
+### `useDuplicateResult<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => readonly [Return, Return]`
+
+Appelle un callback une seule fois, enregistre puis efface son résultat, et retourne ce résultat deux fois.
+
+```ts
+function useDuplicateResult<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => readonly [Return, Return];
+```
+
+```tsx
+import { useDuplicateResult } from "greact-hooks";
+
+const getTwoAnswers = useDuplicateResult(() => ({ answer: 42 }));
+const [first, second] = getTwoAnswers();
+```
+
+- **Paramètre :** `callback`, la fonction dont le résultat sera enregistré, effacé, puis dupliqué.
+- **Retour :** une fonction qui appelle `callback` une fois et renvoie deux références identiques au résultat.
+- **Alternative raisonnable :** appeler directement `callback()`, puis écrire `[result, result]` si le doublon est vraiment nécessaire.
+
+Ce hook n'aurait jamais dû exister, car une ref n'a aucune raison d'oublier un résultat avant de le rendre deux fois.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -149,6 +149,7 @@
             <a href="#useNegativeUnlessZero">useNegativeUnlessZero</a>
             <a href="#useArrayThenObject">useArrayThenObject</a>
             <a href="#useIdFirstCharacter">useIdFirstCharacter</a>
+            <a href="#useDuplicateResult">useDuplicateResult</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -556,7 +557,7 @@ const [result, nothing] = getResultAndNothing();</code></pre>
             </article>
 
             <article class="docs__item" id="useIdFirstCharacter">
-              <header><span class="tag tag--new">New</span><h3>useIdFirstCharacter()</h3></header>
+              <header><span class="tag">Identifier</span><h3>useIdFirstCharacter()</h3></header>
               <p>Asks React for an identifier, then keeps only its first character.</p>
               <h4>Signature</h4>
               <pre><code>useIdFirstCharacter(): string;</code></pre>
@@ -564,6 +565,19 @@ const [result, nothing] = getResultAndNothing();</code></pre>
               <pre><code>const firstCharacter = useIdFirstCharacter();
 // ":"</code></pre>
               <p>A reasonable person would write <code>useId().slice(0, 1)</code>. This hook should not exist because discarding almost an entire identifier is not an abstraction.</p>
+            </article>
+
+            <article class="docs__item" id="useDuplicateResult">
+              <header><span class="tag tag--new">New</span><h3>useDuplicateResult&lt;Args, Return&gt;(callback)</h3></header>
+              <p>Calls a callback once, records and erases its result, then returns that same result twice.</p>
+              <h4>Signature</h4>
+              <pre><code>useDuplicateResult&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): (...args: Args) =&gt; readonly [Return, Return];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const getTwoAnswers = useDuplicateResult(() =&gt; ({ answer: 42 }));
+const [first, second] = getTwoAnswers();</code></pre>
+              <p>A reasonable person would call <code>callback()</code> once and write <code>[result, result]</code> if the duplicate is somehow required. This hook should not exist because a ref should not forget a result before repeating it.</p>
             </article>
           </div>
         </div>
