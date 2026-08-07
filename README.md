@@ -925,6 +925,26 @@ const [first, second] = getTwoAnswers();
 
 Ce hook n'aurait jamais dû exister, car une ref n'a aucune raison d'oublier un résultat avant de le rendre deux fois.
 
+### `useArrayAndElement<T>(value: T): readonly [readonly T[], T]`
+
+Range une valeur dans un tableau à une case, la récupère immédiatement, puis retourne le tableau et sa valeur.
+
+```ts
+function useArrayAndElement<T>(value: T): readonly [readonly T[], T];
+```
+
+```tsx
+import { useArrayAndElement } from "greact-hooks";
+
+const [array, element] = useArrayAndElement("déjà disponible");
+```
+
+- **Paramètre :** `value`, la valeur à emballer avant de la relire.
+- **Retour :** le tableau à une case et l'élément extrait de ce tableau.
+- **Alternative raisonnable :** écrire directement `const array = [value]` et utiliser `value`.
+
+Ce hook n'aurait jamais dû exister, car exposer un détour intermédiaire ne crée aucune information.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
