@@ -38,3 +38,4 @@ export * from "./use-array-then-object";
 export * from "./use-id-first-character";
 export * from "./use-duplicate-result";
 export * from "./use-array-and-element";
+export * from "./use-copied-equality";

@@ -945,6 +945,28 @@ const [array, element] = useArrayAndElement("déjà disponible");
 
 Ce hook n'aurait jamais dû exister, car exposer un détour intermédiaire ne crée aucune information.
 
+### `useCopiedEquality<T>(values: readonly [T, T]): { readonly equal: boolean }`
+
+Copie une paire uniquement pour comparer ses deux éléments et retourner la preuve booléenne de leur égalité.
+
+```ts
+function useCopiedEquality<T>(
+  values: readonly [T, T],
+): { readonly equal: boolean };
+```
+
+```tsx
+import { useCopiedEquality } from "greact-hooks";
+
+const equality = useCopiedEquality([first, second]);
+```
+
+- **Paramètre :** `values`, une paire à copier avant de comparer ses deux cases.
+- **Retour :** un objet contenant `equal`, le résultat de `Object.is` entre les deux éléments.
+- **Alternative raisonnable :** écrire directement `Object.is(values[0], values[1])`.
+
+Ce hook n'aurait jamais dû exister, car copier une paire avant de vérifier une égalité ne rend pas la vérification plus exacte.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

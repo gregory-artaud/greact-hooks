@@ -151,6 +151,7 @@
             <a href="#useIdFirstCharacter">useIdFirstCharacter</a>
             <a href="#useDuplicateResult">useDuplicateResult</a>
             <a href="#useArrayAndElement">useArrayAndElement</a>
+            <a href="#useCopiedEquality">useCopiedEquality</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -582,13 +583,25 @@ const [first, second] = getTwoAnswers();</code></pre>
             </article>
 
             <article class="docs__item" id="useArrayAndElement">
-              <header><span class="tag tag--new">New</span><h3>useArrayAndElement(value)</h3></header>
+              <header><span class="tag">Collection</span><h3>useArrayAndElement(value)</h3></header>
               <p>Places a value in a one-item array, reads it back, then exposes both the detour and its result.</p>
               <h4>Signature</h4>
               <pre><code>useArrayAndElement&lt;T&gt;(value: T): readonly [readonly T[], T];</code></pre>
               <h4>Example</h4>
               <pre><code>const [array, element] = useArrayAndElement("already available");</code></pre>
               <p>A reasonable person would write <code>const array = [value]</code> and use <code>value</code>. This hook should not exist because exposing the intermediate array adds no information.</p>
+            </article>
+
+            <article class="docs__item" id="useCopiedEquality">
+              <header><span class="tag tag--new">New</span><h3>useCopiedEquality&lt;T&gt;(values)</h3></header>
+              <p>Copies a pair solely to compare its two entries and return the obvious equality proof.</p>
+              <h4>Signature</h4>
+              <pre><code>useCopiedEquality&lt;T&gt;(
+  values: readonly [T, T],
+): { readonly equal: boolean };</code></pre>
+              <h4>Example</h4>
+              <pre><code>const equality = useCopiedEquality([first, second]);</code></pre>
+              <p>A reasonable person would write <code>Object.is(values[0], values[1])</code>. This hook should not exist because copying a pair does not improve an equality check.</p>
             </article>
           </div>
         </div>
