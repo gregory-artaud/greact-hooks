@@ -39,3 +39,4 @@ export * from "./use-id-first-character";
 export * from "./use-duplicate-result";
 export * from "./use-array-and-element";
 export * from "./use-copied-equality";
+export * from "./use-discarded-length";

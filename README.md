@@ -967,6 +967,26 @@ const equality = useCopiedEquality([first, second]);
 
 Ce hook n'aurait jamais dû exister, car copier une paire avant de vérifier une égalité ne rend pas la vérification plus exacte.
 
+### `useDiscardedLength(value: string): number`
+
+Découpe une chaîne, jette immédiatement les caractères, puis compte ce qui vient de disparaître.
+
+```ts
+function useDiscardedLength(value: string): number;
+```
+
+```tsx
+import { useDiscardedLength } from "greact-hooks";
+
+const count = useDiscardedLength("absurd");
+```
+
+- **Paramètre :** `value`, la chaîne à transformer en caractères avant de les supprimer.
+- **Retour :** le nombre de caractères supprimés, identique à la longueur de `value`.
+- **Alternative raisonnable :** écrire directement `value.length`.
+
+Ce hook n'aurait jamais dû exister, car compter des caractères avant de les jeter n'est pas un travail pour React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

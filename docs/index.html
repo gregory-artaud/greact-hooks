@@ -152,6 +152,7 @@
             <a href="#useDuplicateResult">useDuplicateResult</a>
             <a href="#useArrayAndElement">useArrayAndElement</a>
             <a href="#useCopiedEquality">useCopiedEquality</a>
+            <a href="#useDiscardedLength">useDiscardedLength</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -593,7 +594,7 @@ const [first, second] = getTwoAnswers();</code></pre>
             </article>
 
             <article class="docs__item" id="useCopiedEquality">
-              <header><span class="tag tag--new">New</span><h3>useCopiedEquality&lt;T&gt;(values)</h3></header>
+              <header><span class="tag">Equality</span><h3>useCopiedEquality&lt;T&gt;(values)</h3></header>
               <p>Copies a pair solely to compare its two entries and return the obvious equality proof.</p>
               <h4>Signature</h4>
               <pre><code>useCopiedEquality&lt;T&gt;(
@@ -602,6 +603,17 @@ const [first, second] = getTwoAnswers();</code></pre>
               <h4>Example</h4>
               <pre><code>const equality = useCopiedEquality([first, second]);</code></pre>
               <p>A reasonable person would write <code>Object.is(values[0], values[1])</code>. This hook should not exist because copying a pair does not improve an equality check.</p>
+            </article>
+
+            <article class="docs__item" id="useDiscardedLength">
+              <header><span class="tag tag--new">New</span><h3>useDiscardedLength(value)</h3></header>
+              <p>Splits a string, throws away the characters, then counts the discarded pieces.</p>
+              <h4>Signature</h4>
+              <pre><code>useDiscardedLength(value: string): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const count = useDiscardedLength("absurd");
+// 6</code></pre>
+              <p>A reasonable person would write <code>value.length</code>. This hook should not exist because counting what was just thrown away is not a lifecycle.</p>
             </article>
           </div>
         </div>
