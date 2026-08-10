@@ -987,6 +987,29 @@ const count = useDiscardedLength("absurd");
 
 Ce hook n'aurait jamais dû exister, car compter des caractères avant de les jeter n'est pas un travail pour React.
 
+### `useCallbackArgumentCount<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => number`
+
+Appelle le callback, jette son résultat, puis retourne uniquement le nombre d'arguments reçus.
+
+```ts
+function useCallbackArgumentCount<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => number;
+```
+
+```tsx
+import { useCallbackArgumentCount } from "greact-hooks";
+
+const countArguments = useCallbackArgumentCount((value: string) => value.length);
+const count = countArguments("discarded"); // 1
+```
+
+- **Paramètre :** `callback`, la fonction dont le résultat sera ignoré.
+- **Retour :** une fonction qui appelle le callback et renvoie le nombre d'arguments passés.
+- **Alternative raisonnable :** écrire directement un wrapper qui appelle `callback(...args)` puis retourne `args.length`.
+
+Ce hook n'aurait jamais dû exister, car sacrifier le résultat d'un callback pour compter ses arguments n'est pas une abstraction React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -153,6 +153,7 @@
             <a href="#useArrayAndElement">useArrayAndElement</a>
             <a href="#useCopiedEquality">useCopiedEquality</a>
             <a href="#useDiscardedLength">useDiscardedLength</a>
+            <a href="#useCallbackArgumentCount">useCallbackArgumentCount</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -606,7 +607,7 @@ const [first, second] = getTwoAnswers();</code></pre>
             </article>
 
             <article class="docs__item" id="useDiscardedLength">
-              <header><span class="tag tag--new">New</span><h3>useDiscardedLength(value)</h3></header>
+              <header><h3>useDiscardedLength(value)</h3></header>
               <p>Splits a string, throws away the characters, then counts the discarded pieces.</p>
               <h4>Signature</h4>
               <pre><code>useDiscardedLength(value: string): number;</code></pre>
@@ -614,6 +615,20 @@ const [first, second] = getTwoAnswers();</code></pre>
               <pre><code>const count = useDiscardedLength("absurd");
 // 6</code></pre>
               <p>A reasonable person would write <code>value.length</code>. This hook should not exist because counting what was just thrown away is not a lifecycle.</p>
+            </article>
+
+            <article class="docs__item" id="useCallbackArgumentCount">
+              <header><span class="tag tag--new">New</span><h3>useCallbackArgumentCount(callback)</h3></header>
+              <p>Calls a callback, discards its result, and returns only how many arguments arrived.</p>
+              <h4>Signature</h4>
+              <pre><code>useCallbackArgumentCount&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): (...args: Args) =&gt; number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const countArguments = useCallbackArgumentCount((value: string) =&gt; value.length);
+const count = countArguments("discarded");
+// 1</code></pre>
+              <p>A reasonable person would write a small wrapper that calls <code>callback(...args)</code> and returns <code>args.length</code>. This hook should not exist because throwing away a useful result is not a React concern.</p>
             </article>
           </div>
         </div>
