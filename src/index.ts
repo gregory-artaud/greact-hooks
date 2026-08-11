@@ -41,3 +41,4 @@ export * from "./use-array-and-element";
 export * from "./use-copied-equality";
 export * from "./use-discarded-length";
 export * from "./use-callback-argument-count";
+export * from "./use-rounded-exception";

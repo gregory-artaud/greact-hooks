@@ -1010,6 +1010,27 @@ const count = countArguments("discarded"); // 1
 
 Ce hook n'aurait jamais dû exister, car sacrifier le résultat d'un callback pour compter ses arguments n'est pas une abstraction React.
 
+### `useRoundedException(value: number): { readonly value: number }`
+
+Arrondit un nombre, sauf lorsqu'il est déjà arrondi : dans ce cas, il lui ajoute `1`.
+
+```ts
+function useRoundedException(value: number): { readonly value: number };
+```
+
+```tsx
+import { useRoundedException } from "greact-hooks";
+
+const result = useRoundedException(2);
+// { value: 3 }
+```
+
+- **Paramètre :** `value`, le nombre à arrondir avant de contrarier les valeurs déjà entières.
+- **Retour :** un objet contenant le résultat arrondi, augmenté de `1` si l'arrondi était déjà exact.
+- **Alternative raisonnable :** écrire directement `Object.is(Math.round(value), value) ? Math.round(value) + 1 : Math.round(value)`.
+
+Ce hook n'aurait jamais dû exister, car une exception à l'arrondi n'est pas un état React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
