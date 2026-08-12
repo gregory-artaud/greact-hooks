@@ -1031,6 +1031,27 @@ const result = useRoundedException(2);
 
 Ce hook n'aurait jamais dû exister, car une exception à l'arrondi n'est pas un état React.
 
+### `useParityPick<T>(values: readonly T[]): T | undefined`
+
+Compte les éléments, utilise la parité du total comme index, puis emballe et déballe le résultat choisi.
+
+```ts
+function useParityPick<T>(values: readonly T[]): T | undefined;
+```
+
+```tsx
+import { useParityPick } from "greact-hooks";
+
+const picked = useParityPick(["first", "second", "third"]);
+// "second"
+```
+
+- **Paramètre :** `values`, la liste dont la longueur décide quel élément sera choisi.
+- **Retour :** l'élément à l'index `values.length % 2`, ou `undefined` si cet index n'existe pas.
+- **Alternative raisonnable :** écrire directement `values[values.length % 2]`.
+
+Ce hook n'aurait jamais dû exister, car la parité d'une longueur n'est pas une raison de fabriquer un hook React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

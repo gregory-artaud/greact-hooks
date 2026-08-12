@@ -155,6 +155,7 @@
             <a href="#useDiscardedLength">useDiscardedLength</a>
             <a href="#useCallbackArgumentCount">useCallbackArgumentCount</a>
             <a href="#useRoundedException">useRoundedException</a>
+            <a href="#useParityPick">useParityPick</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -633,7 +634,7 @@ const count = countArguments("discarded");
             </article>
 
             <article class="docs__item" id="useRoundedException">
-              <header><span class="tag tag--new">New</span><h3>useRoundedException(value)</h3></header>
+              <header><span class="tag">Arithmetic</span><h3>useRoundedException(value)</h3></header>
               <p>Rounds a number, then adds one when the rounding was already exact.</p>
               <h4>Signature</h4>
               <pre><code>useRoundedException(value: number): { readonly value: number };</code></pre>
@@ -641,6 +642,17 @@ const count = countArguments("discarded");
               <pre><code>const result = useRoundedException(2);
 // { value: 3 }</code></pre>
               <p>A reasonable person would write <code>Object.is(Math.round(value), value) ? Math.round(value) + 1 : Math.round(value)</code>. This hook should not exist because an exception to rounding is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useParityPick">
+              <header><span class="tag tag--new">New</span><h3>useParityPick&lt;T&gt;(values)</h3></header>
+              <p>Counts a list, uses the total's parity as an index, then needlessly wraps and unwraps the chosen value.</p>
+              <h4>Signature</h4>
+              <pre><code>useParityPick&lt;T&gt;(values: readonly T[]): T | undefined;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const picked = useParityPick(["first", "second", "third"]);
+// "second"</code></pre>
+              <p>A reasonable person would write <code>values[values.length % 2]</code>. This hook should not exist because the parity of a list length is not a React concern.</p>
             </article>
           </div>
         </div>
