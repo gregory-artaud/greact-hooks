@@ -1052,6 +1052,30 @@ const picked = useParityPick(["first", "second", "third"]);
 
 Ce hook n'aurait jamais dû exister, car la parité d'une longueur n'est pas une raison de fabriquer un hook React.
 
+### `useUncalledAction<Args extends unknown[], Return>(callback: (...args: Args) => Return): readonly [UncalledAction<Args>, boolean]`
+
+Emballe un callback, le copie, puis fournit une action qui ne l'appelle jamais.
+
+```ts
+function useUncalledAction<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): readonly [UncalledAction<Args>, boolean];
+```
+
+```tsx
+import { useUncalledAction } from "greact-hooks";
+
+const [action, isOriginal] = useUncalledAction(() => "ignored");
+action(); // rien ne se passe
+// isOriginal === false
+```
+
+- **Paramètre :** `callback`, une fonction consciencieusement conservée mais jamais appelée.
+- **Retour :** une action mémoïsée sans effet et la preuve qu'elle n'est pas le callback original.
+- **Alternative raisonnable :** ne rien faire du tout.
+
+Ce hook n'aurait jamais dû exister, car une action qui refuse d'agir n'avait pas besoin de passer par React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

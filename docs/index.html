@@ -156,6 +156,7 @@
             <a href="#useCallbackArgumentCount">useCallbackArgumentCount</a>
             <a href="#useRoundedException">useRoundedException</a>
             <a href="#useParityPick">useParityPick</a>
+            <a href="#useUncalledAction">useUncalledAction</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -645,7 +646,7 @@ const count = countArguments("discarded");
             </article>
 
             <article class="docs__item" id="useParityPick">
-              <header><span class="tag tag--new">New</span><h3>useParityPick&lt;T&gt;(values)</h3></header>
+              <header><span class="tag">Collection</span><h3>useParityPick&lt;T&gt;(values)</h3></header>
               <p>Counts a list, uses the total's parity as an index, then needlessly wraps and unwraps the chosen value.</p>
               <h4>Signature</h4>
               <pre><code>useParityPick&lt;T&gt;(values: readonly T[]): T | undefined;</code></pre>
@@ -653,6 +654,19 @@ const count = countArguments("discarded");
               <pre><code>const picked = useParityPick(["first", "second", "third"]);
 // "second"</code></pre>
               <p>A reasonable person would write <code>values[values.length % 2]</code>. This hook should not exist because the parity of a list length is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useUncalledAction">
+              <header><span class="tag tag--new">New</span><h3>useUncalledAction&lt;Args, Return&gt;(callback)</h3></header>
+              <p>Packs a callback, copies it, then exposes an action that never calls it.</p>
+              <h4>Signature</h4>
+              <pre><code>useUncalledAction&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): readonly [UncalledAction&lt;Args&gt;, boolean];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [action, isOriginal] = useUncalledAction(() =&gt; "ignored");
+action(); // nothing happens</code></pre>
+              <p>A reasonable person would do nothing at all. This hook should not exist because an action that refuses to act has no reason to involve React.</p>
             </article>
           </div>
         </div>
