@@ -1099,6 +1099,26 @@ forget(); // la valeur est oubliée
 
 Ce hook n'aurait jamais dû exister, car oublier une valeur n'est pas une responsabilité de React.
 
+### `useMemoThenDiscard<T>(value: T): { readonly value: T }`
+
+Mémoïse un objet, lit sa propriété, jette l'objet, puis en fabrique un autre identique.
+
+```ts
+function useMemoThenDiscard<T>(value: T): { readonly value: T };
+```
+
+```tsx
+import { useMemoThenDiscard } from "greact-hooks";
+
+const wrapped = useMemoThenDiscard("already available");
+```
+
+- **Paramètre :** `value`, la valeur enfermée dans un objet mémoïsé avant d'être récupérée.
+- **Retour :** un nouvel objet `{ value }` à chaque rendu.
+- **Alternative raisonnable :** écrire directement `{ value }`.
+
+Ce hook n'aurait jamais dû exister, car mémoïser un emballage pour le jeter avant d'en recréer un autre est une perte de temps.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

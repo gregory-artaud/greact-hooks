@@ -158,6 +158,7 @@
             <a href="#useParityPick">useParityPick</a>
             <a href="#useUncalledAction">useUncalledAction</a>
             <a href="#useForgetResult">useForgetResult</a>
+            <a href="#useMemoThenDiscard">useMemoThenDiscard</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -671,7 +672,7 @@ action(); // nothing happens</code></pre>
             </article>
 
             <article class="docs__item" id="useForgetResult">
-              <header><span class="tag tag--new">New</span><h3>useForgetResult&lt;Args, Return&gt;(callback)</h3></header>
+              <header><h3>useForgetResult&lt;Args, Return&gt;(callback)</h3></header>
               <p>Calls a callback, then carefully throws away the result it just made.</p>
               <h4>Signature</h4>
               <pre><code>useForgetResult&lt;Args extends unknown[], Return&gt;(
@@ -681,6 +682,16 @@ action(); // nothing happens</code></pre>
               <pre><code>const forget = useForgetResult(() =&gt; "unnecessary");
 forget(); // the result is forgotten</code></pre>
               <p>A reasonable person would write <code>void callback(...args)</code>. This hook should not exist because forgetting a value is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useMemoThenDiscard">
+              <header><span class="tag tag--new">New</span><h3>useMemoThenDiscard&lt;T&gt;(value)</h3></header>
+              <p>Memoizes an object, reads its property, throws the object away, then creates another identical object.</p>
+              <h4>Signature</h4>
+              <pre><code>useMemoThenDiscard&lt;T&gt;(value: T): { readonly value: T };</code></pre>
+              <h4>Example</h4>
+              <pre><code>const wrapped = useMemoThenDiscard("already available");</code></pre>
+              <p>A reasonable person would write <code>{ value }</code>. This hook should not exist because memoizing a wrapper before discarding it is wasted work.</p>
             </article>
           </div>
         </div>
