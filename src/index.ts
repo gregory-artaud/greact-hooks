@@ -44,3 +44,4 @@ export * from "./use-callback-argument-count";
 export * from "./use-rounded-exception";
 export * from "./use-parity-pick";
 export * from "./use-uncalled-action";
+export * from "./use-forget-result";

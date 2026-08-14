@@ -157,6 +157,7 @@
             <a href="#useRoundedException">useRoundedException</a>
             <a href="#useParityPick">useParityPick</a>
             <a href="#useUncalledAction">useUncalledAction</a>
+            <a href="#useForgetResult">useForgetResult</a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -657,7 +658,7 @@ const count = countArguments("discarded");
             </article>
 
             <article class="docs__item" id="useUncalledAction">
-              <header><span class="tag tag--new">New</span><h3>useUncalledAction&lt;Args, Return&gt;(callback)</h3></header>
+              <header><span class="tag">Callback</span><h3>useUncalledAction&lt;Args, Return&gt;(callback)</h3></header>
               <p>Packs a callback, copies it, then exposes an action that never calls it.</p>
               <h4>Signature</h4>
               <pre><code>useUncalledAction&lt;Args extends unknown[], Return&gt;(
@@ -667,6 +668,19 @@ const count = countArguments("discarded");
               <pre><code>const [action, isOriginal] = useUncalledAction(() =&gt; "ignored");
 action(); // nothing happens</code></pre>
               <p>A reasonable person would do nothing at all. This hook should not exist because an action that refuses to act has no reason to involve React.</p>
+            </article>
+
+            <article class="docs__item" id="useForgetResult">
+              <header><span class="tag tag--new">New</span><h3>useForgetResult&lt;Args, Return&gt;(callback)</h3></header>
+              <p>Calls a callback, then carefully throws away the result it just made.</p>
+              <h4>Signature</h4>
+              <pre><code>useForgetResult&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): (...args: Args) =&gt; void;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const forget = useForgetResult(() =&gt; "unnecessary");
+forget(); // the result is forgotten</code></pre>
+              <p>A reasonable person would write <code>void callback(...args)</code>. This hook should not exist because forgetting a value is not a React concern.</p>
             </article>
           </div>
         </div>

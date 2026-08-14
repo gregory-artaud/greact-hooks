@@ -1076,6 +1076,29 @@ action(); // rien ne se passe
 
 Ce hook n'aurait jamais dû exister, car une action qui refuse d'agir n'avait pas besoin de passer par React.
 
+### `useForgetResult<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => void`
+
+Appelle un callback, puis jette consciencieusement la valeur qu'il vient de produire.
+
+```ts
+function useForgetResult<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => void;
+```
+
+```tsx
+import { useForgetResult } from "greact-hooks";
+
+const forget = useForgetResult(() => "inutile");
+forget(); // la valeur est oubliée
+```
+
+- **Paramètre :** `callback`, une fonction dont le résultat sera immédiatement abandonné.
+- **Retour :** une fonction mémoïsée qui appelle `callback` et retourne `void`.
+- **Alternative raisonnable :** écrire directement `void callback(...args)`.
+
+Ce hook n'aurait jamais dû exister, car oublier une valeur n'est pas une responsabilité de React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
