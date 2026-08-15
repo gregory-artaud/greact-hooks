@@ -1119,6 +1119,27 @@ const wrapped = useMemoThenDiscard("already available");
 
 Ce hook n'aurait jamais dû exister, car mémoïser un emballage pour le jeter avant d'en recréer un autre est une perte de temps.
 
+### `useCompareThenErase<T>(value: T): (candidate: T) => boolean`
+
+Conserve la première valeur, compare chaque candidat avec elle, puis efface immédiatement la preuve de la comparaison.
+
+```ts
+function useCompareThenErase<T>(value: T): (candidate: T) => boolean;
+```
+
+```tsx
+import { useCompareThenErase } from "greact-hooks";
+
+const compareWithFirst = useCompareThenErase(firstValue);
+compareWithFirst(candidate); // true ou false, après un effacement inutile
+```
+
+- **Paramètre :** `value`, la valeur initiale conservée pour les comparaisons suivantes.
+- **Retour :** une fonction qui compare un candidat à cette valeur avec `Object.is`.
+- **Alternative raisonnable :** écrire directement `Object.is(firstValue, candidate)`.
+
+Ce hook n'aurait jamais dû exister, car conserver une valeur dans React pour effacer aussitôt la preuve de son égalité est un détour inutile.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
