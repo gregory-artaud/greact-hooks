@@ -159,7 +159,8 @@
             <a href="#useUncalledAction">useUncalledAction</a>
             <a href="#useForgetResult">useForgetResult</a>
             <a href="#useMemoThenDiscard">useMemoThenDiscard</a>
-            <a href="#useCompareThenErase">useCompareThenErase <span class="tag tag--new">New</span></a>
+            <a href="#useCompareThenErase">useCompareThenErase</a>
+            <a href="#useCallbackSelfCheck">useCallbackSelfCheck <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -696,7 +697,7 @@ forget(); // the result is forgotten</code></pre>
             </article>
 
             <article class="docs__item" id="useCompareThenErase">
-              <header><span class="tag tag--new">New</span><h3>useCompareThenErase&lt;T&gt;(value)</h3></header>
+              <header><span class="tag">Equality</span><h3>useCompareThenErase&lt;T&gt;(value)</h3></header>
               <p>Stores the first value, compares candidates with it, then erases the comparison proof before returning its copy.</p>
               <h4>Signature</h4>
               <pre><code>useCompareThenErase&lt;T&gt;(value: T): (candidate: T) =&gt; boolean;</code></pre>
@@ -704,6 +705,17 @@ forget(); // the result is forgotten</code></pre>
               <pre><code>const compareWithFirst = useCompareThenErase(firstValue);
 const isSame = compareWithFirst(candidate);</code></pre>
               <p>A reasonable person would write <code>Object.is(firstValue, candidate)</code>. This hook should not exist because React does not need to preserve a comparison before immediately throwing its proof away.</p>
+            </article>
+
+            <article class="docs__item" id="useCallbackSelfCheck">
+              <header><span class="tag tag--new">New</span><h3>useCallbackSelfCheck&lt;Return&gt;(callback)</h3></header>
+              <p>Calls a callback, copies its result, and asks whether the result is the callback itself.</p>
+              <h4>Signature</h4>
+              <pre><code>useCallbackSelfCheck&lt;Return&gt;(callback: () =&gt; Return): boolean;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const isSelfReturning = useCallbackSelfCheck(() =&gt; "not myself");
+// false</code></pre>
+              <p>A reasonable person would write <code>Object.is(callback(), callback)</code>. This hook should not exist because a callback does not need React to inspect its own return value.</p>
             </article>
           </div>
         </div>

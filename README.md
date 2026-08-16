@@ -1140,6 +1140,27 @@ compareWithFirst(candidate); // true ou false, après un effacement inutile
 
 Ce hook n'aurait jamais dû exister, car conserver une valeur dans React pour effacer aussitôt la preuve de son égalité est un détour inutile.
 
+### `useCallbackSelfCheck<Return>(callback: () => Return): boolean`
+
+Exécute un callback uniquement pour vérifier si son résultat est exactement ce callback.
+
+```ts
+function useCallbackSelfCheck<Return>(callback: () => Return): boolean;
+```
+
+```tsx
+import { useCallbackSelfCheck } from "greact-hooks";
+
+const isSelfReturning = useCallbackSelfCheck(() => "not myself");
+// false
+```
+
+- **Paramètre :** `callback`, la fonction appelée pour examiner son propre résultat.
+- **Retour :** `true` si le résultat est la même fonction, sinon `false`.
+- **Alternative raisonnable :** écrire directement `Object.is(callback(), callback)`.
+
+Ce hook n'aurait jamais dû exister, car demander à une fonction si elle s'est retournée elle-même n'est pas une responsabilité de React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

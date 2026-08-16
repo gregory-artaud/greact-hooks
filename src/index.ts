@@ -47,3 +47,4 @@ export * from "./use-uncalled-action";
 export * from "./use-forget-result";
 export * from "./use-memo-then-discard";
 export * from "./use-compare-then-erase";
+export * from "./use-callback-self-check";
