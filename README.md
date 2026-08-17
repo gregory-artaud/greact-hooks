@@ -1161,6 +1161,27 @@ const isSelfReturning = useCallbackSelfCheck(() => "not myself");
 
 Ce hook n'aurait jamais dû exister, car demander à une fonction si elle s'est retournée elle-même n'est pas une responsabilité de React.
 
+### `useMiddleSplit(value: string): readonly [string, string]`
+
+Découpe une chaîne en deux au milieu, puis efface la variable qui conservait le résultat avant de le retourner.
+
+```ts
+function useMiddleSplit(value: string): readonly [string, string];
+```
+
+```tsx
+import { useMiddleSplit } from "greact-hooks";
+
+const [left, right] = useMiddleSplit("abcd");
+// ["ab", "cd"]
+```
+
+- **Paramètre :** `value`, la chaîne à couper en deux.
+- **Retour :** les deux moitiés, la seconde recevant le caractère supplémentaire si la longueur est impaire.
+- **Alternative raisonnable :** écrire directement les deux appels à `slice`.
+
+Ce hook n'aurait jamais dû exister, car React ne rend pas une découpe de chaîne plus importante.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
