@@ -1182,6 +1182,29 @@ const [left, right] = useMiddleSplit("abcd");
 
 Ce hook n'aurait jamais dû exister, car React ne rend pas une découpe de chaîne plus importante.
 
+### `useDoubledLength<T>(values: readonly T[]): { readonly value: number }`
+
+Duplique une liste, compte la liste doublée, puis divise par deux pour retrouver sa longueur d'origine.
+
+```ts
+function useDoubledLength<T>(
+  values: readonly T[],
+): { readonly value: number };
+```
+
+```tsx
+import { useDoubledLength } from "greact-hooks";
+
+const result = useDoubledLength(["one", "two"]);
+// { value: 2 }
+```
+
+- **Paramètre :** `values`, la liste à dupliquer sans raison.
+- **Retour :** un objet dont `value` est la longueur de la liste originale.
+- **Alternative raisonnable :** écrire directement `values.length`.
+
+Ce hook n'aurait jamais dû exister, car compter une liste ne s'améliore pas quand on la copie deux fois avant de la compter.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

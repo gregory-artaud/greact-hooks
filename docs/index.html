@@ -161,7 +161,8 @@
             <a href="#useMemoThenDiscard">useMemoThenDiscard</a>
             <a href="#useCompareThenErase">useCompareThenErase</a>
             <a href="#useCallbackSelfCheck">useCallbackSelfCheck</a>
-            <a href="#useMiddleSplit">useMiddleSplit <span class="tag tag--new">New</span></a>
+            <a href="#useMiddleSplit">useMiddleSplit</a>
+            <a href="#useDoubledLength">useDoubledLength <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -720,7 +721,7 @@ const isSame = compareWithFirst(candidate);</code></pre>
             </article>
 
             <article class="docs__item" id="useMiddleSplit">
-              <header><span class="tag tag--new">New</span><h3>useMiddleSplit(value)</h3></header>
+              <header><span class="tag">String</span><h3>useMiddleSplit(value)</h3></header>
               <p>Splits a string into two halves, then erases the local variable that was holding the result.</p>
               <h4>Signature</h4>
               <pre><code>useMiddleSplit(value: string): readonly [string, string];</code></pre>
@@ -728,6 +729,19 @@ const isSame = compareWithFirst(candidate);</code></pre>
               <pre><code>const [left, right] = useMiddleSplit("abcd");
 // ["ab", "cd"]</code></pre>
               <p>A reasonable person would write the two <code>slice</code> calls directly. This hook should not exist because React does not improve a string split.</p>
+            </article>
+
+            <article class="docs__item" id="useDoubledLength">
+              <header><span class="tag tag--new">New</span><h3>useDoubledLength&lt;T&gt;(values)</h3></header>
+              <p>Duplicates a list, counts the doubled list, and divides by two to recover its original length.</p>
+              <h4>Signature</h4>
+              <pre><code>useDoubledLength&lt;T&gt;(
+  values: readonly T[],
+): { readonly value: number };</code></pre>
+              <h4>Example</h4>
+              <pre><code>const result = useDoubledLength(["one", "two"]);
+// { value: 2 }</code></pre>
+              <p>A reasonable person would write <code>values.length</code>. This hook should not exist because duplicating a list before counting it is not a React concern.</p>
             </article>
           </div>
         </div>
