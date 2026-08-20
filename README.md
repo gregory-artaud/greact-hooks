@@ -1205,6 +1205,27 @@ const result = useDoubledLength(["one", "two"]);
 
 Ce hook n'aurait jamais dû exister, car compter une liste ne s'améliore pas quand on la copie deux fois avant de la compter.
 
+### `useCountDigits<T>(values: readonly T[]): number`
+
+Compte les éléments d'une liste, transforme ce compte en chaîne, puis compte les chiffres de cette chaîne.
+
+```ts
+function useCountDigits<T>(values: readonly T[]): number;
+```
+
+```tsx
+import { useCountDigits } from "greact-hooks";
+
+const digitCount = useCountDigits(["one", "two", "three"]);
+// 1
+```
+
+- **Paramètre :** `values`, la liste dont il faut compter les chiffres du compte.
+- **Retour :** le nombre de chiffres nécessaires pour écrire `values.length` en base dix.
+- **Alternative raisonnable :** écrire directement `String(values.length).length`.
+
+Ce hook n'aurait jamais dû exister, car compter les chiffres d'un compte ne devient pas plus sérieux avec React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

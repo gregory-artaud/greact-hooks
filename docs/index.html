@@ -162,7 +162,8 @@
             <a href="#useCompareThenErase">useCompareThenErase</a>
             <a href="#useCallbackSelfCheck">useCallbackSelfCheck</a>
             <a href="#useMiddleSplit">useMiddleSplit</a>
-            <a href="#useDoubledLength">useDoubledLength <span class="tag tag--new">New</span></a>
+            <a href="#useDoubledLength">useDoubledLength</a>
+            <a href="#useCountDigits">useCountDigits <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -732,7 +733,7 @@ const isSame = compareWithFirst(candidate);</code></pre>
             </article>
 
             <article class="docs__item" id="useDoubledLength">
-              <header><span class="tag tag--new">New</span><h3>useDoubledLength&lt;T&gt;(values)</h3></header>
+              <header><span class="tag">Collection</span><h3>useDoubledLength&lt;T&gt;(values)</h3></header>
               <p>Duplicates a list, counts the doubled list, and divides by two to recover its original length.</p>
               <h4>Signature</h4>
               <pre><code>useDoubledLength&lt;T&gt;(
@@ -742,6 +743,17 @@ const isSame = compareWithFirst(candidate);</code></pre>
               <pre><code>const result = useDoubledLength(["one", "two"]);
 // { value: 2 }</code></pre>
               <p>A reasonable person would write <code>values.length</code>. This hook should not exist because duplicating a list before counting it is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useCountDigits">
+              <header><span class="tag tag--new">New</span><h3>useCountDigits&lt;T&gt;(values)</h3></header>
+              <p>Counts a list, turns that count into text, then counts the digits in the text.</p>
+              <h4>Signature</h4>
+              <pre><code>useCountDigits&lt;T&gt;(values: readonly T[]): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const digitCount = useCountDigits(["one", "two", "three"]);
+// 1</code></pre>
+              <p>A reasonable person would write <code>String(values.length).length</code>. This hook should not exist because counting the digits of a count is not improved by React.</p>
             </article>
           </div>
         </div>

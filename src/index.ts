@@ -50,3 +50,4 @@ export * from "./use-compare-then-erase";
 export * from "./use-callback-self-check";
 export * from "./use-middle-split";
 export * from "./use-doubled-length";
+export * from "./use-count-digits";
