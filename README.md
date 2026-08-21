@@ -1226,6 +1226,27 @@ const digitCount = useCountDigits(["one", "two", "three"]);
 
 Ce hook n'aurait jamais dû exister, car compter les chiffres d'un compte ne devient pas plus sérieux avec React.
 
+### `useLastCharCount(value: string): number`
+
+Trouve le dernier caractère d'une chaîne, puis compte combien de fois il apparaît dans cette même chaîne.
+
+```ts
+function useLastCharCount(value: string): number;
+```
+
+```tsx
+import { useLastCharCount } from "greact-hooks";
+
+const count = useLastCharCount("banana");
+// 3
+```
+
+- **Paramètre :** `value`, la chaîne dont le dernier caractère doit être compté.
+- **Retour :** le nombre d'apparitions de ce dernier caractère, ou `0` pour une chaîne vide.
+- **Alternative raisonnable :** écrire directement la boucle de comptage.
+
+Ce hook n'aurait jamais dû exister, car React n'a aucune raison de surveiller les fréquentations du dernier caractère.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
