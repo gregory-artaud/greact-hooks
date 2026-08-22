@@ -1247,6 +1247,29 @@ const count = useLastCharCount("banana");
 
 Ce hook n'aurait jamais dû exister, car React n'a aucune raison de surveiller les fréquentations du dernier caractère.
 
+### `useDiscardThenReturn<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => (...args: Args) => Return`
+
+Appelle le callback, jette son résultat, puis retourne le callback lui-même.
+
+```ts
+function useDiscardThenReturn<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => (...args: Args) => Return;
+```
+
+```tsx
+import { useDiscardThenReturn } from "greact-hooks";
+
+const getCallback = useDiscardThenReturn((value: string) => value.length);
+const callback = getCallback("hook");
+```
+
+- **Paramètre :** `callback`, la fonction qui sera appelée sans que son résultat serve à quoi que ce soit.
+- **Retour :** une fonction qui appelle `callback` puis retourne `callback`.
+- **Alternative raisonnable :** écrire directement `(...args) => { callback(...args); return callback; }`.
+
+Ce hook n'aurait jamais dû exister, car jeter une valeur pour rendre la fonction qui l'a produite ne nécessite pas React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
