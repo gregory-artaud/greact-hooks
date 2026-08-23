@@ -1270,6 +1270,29 @@ const callback = getCallback("hook");
 
 Ce hook n'aurait jamais dû exister, car jeter une valeur pour rendre la fonction qui l'a produite ne nécessite pas React.
 
+### `useDiscardConfirmation<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => boolean`
+
+Exécute le callback, met son résultat dans un tableau, le retire immédiatement, puis confirme si la valeur retirée était `undefined`.
+
+```ts
+function useDiscardConfirmation<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => boolean;
+```
+
+```tsx
+import { useDiscardConfirmation } from "greact-hooks";
+
+const wasNothing = useDiscardConfirmation(() => undefined);
+wasNothing(); // true
+```
+
+- **Paramètre :** `callback`, la fonction dont le résultat sera ajouté puis retiré sans raison.
+- **Retour :** une fonction qui renvoie `true` si le résultat du callback était `undefined`, sinon `false`.
+- **Alternative raisonnable :** écrire directement `(...args) => callback(...args) === undefined`.
+
+Ce hook n'aurait jamais dû exister, car React n'a pas besoin de certifier le contenu d'un tableau aussitôt vidé.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -165,7 +165,8 @@
             <a href="#useDoubledLength">useDoubledLength</a>
             <a href="#useCountDigits">useCountDigits</a>
             <a href="#useLastCharCount">useLastCharCount</a>
-            <a href="#useDiscardThenReturn">useDiscardThenReturn <span class="tag tag--new">New</span></a>
+            <a href="#useDiscardThenReturn">useDiscardThenReturn</a>
+            <a href="#useDiscardConfirmation">useDiscardConfirmation <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -770,7 +771,7 @@ const isSame = compareWithFirst(candidate);</code></pre>
             </article>
 
             <article class="docs__item" id="useDiscardThenReturn">
-              <header><span class="tag tag--new">New</span><h3>useDiscardThenReturn&lt;Args, Return&gt;(callback)</h3></header>
+              <header><span class="tag">Callback</span><h3>useDiscardThenReturn&lt;Args, Return&gt;(callback)</h3></header>
               <p>Calls a callback, throws away its result, and returns the callback that was just called.</p>
               <h4>Signature</h4>
               <pre><code>useDiscardThenReturn&lt;Args extends unknown[], Return&gt;(
@@ -780,6 +781,19 @@ const isSame = compareWithFirst(candidate);</code></pre>
               <pre><code>const returnCallback = useDiscardThenReturn((value: string) =&gt; value.length);
 const callback = returnCallback("hook");</code></pre>
               <p>A reasonable person would write <code>(...args) =&gt; { callback(...args); return callback; }</code>. This hook should not exist because React should not supervise a discarded result.</p>
+            </article>
+
+            <article class="docs__item" id="useDiscardConfirmation">
+              <header><span class="tag tag--new">New</span><h3>useDiscardConfirmation&lt;Args, Return&gt;(callback)</h3></header>
+              <p>Calls a callback, puts its result in an array, removes it immediately, and checks whether the removed value was <code>undefined</code>.</p>
+              <h4>Signature</h4>
+              <pre><code>useDiscardConfirmation&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): (...args: Args) =&gt; boolean;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const wasNothing = useDiscardConfirmation(() =&gt; undefined);
+wasNothing(); // true</code></pre>
+              <p>A reasonable person would write <code>(...args) =&gt; callback(...args) === undefined</code>. This hook should not exist because React does not need to certify an array it emptied itself.</p>
             </article>
           </div>
         </div>
