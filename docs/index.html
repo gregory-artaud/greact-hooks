@@ -166,7 +166,8 @@
             <a href="#useCountDigits">useCountDigits</a>
             <a href="#useLastCharCount">useLastCharCount</a>
             <a href="#useDiscardThenReturn">useDiscardThenReturn</a>
-            <a href="#useDiscardConfirmation">useDiscardConfirmation <span class="tag tag--new">New</span></a>
+            <a href="#useDiscardConfirmation">useDiscardConfirmation</a>
+            <a href="#useReverseReceipt">useReverseReceipt <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -784,7 +785,7 @@ const callback = returnCallback("hook");</code></pre>
             </article>
 
             <article class="docs__item" id="useDiscardConfirmation">
-              <header><span class="tag tag--new">New</span><h3>useDiscardConfirmation&lt;Args, Return&gt;(callback)</h3></header>
+              <header><h3>useDiscardConfirmation&lt;Args, Return&gt;(callback)</h3></header>
               <p>Calls a callback, puts its result in an array, removes it immediately, and checks whether the removed value was <code>undefined</code>.</p>
               <h4>Signature</h4>
               <pre><code>useDiscardConfirmation&lt;Args extends unknown[], Return&gt;(
@@ -794,6 +795,17 @@ const callback = returnCallback("hook");</code></pre>
               <pre><code>const wasNothing = useDiscardConfirmation(() =&gt; undefined);
 wasNothing(); // true</code></pre>
               <p>A reasonable person would write <code>(...args) =&gt; callback(...args) === undefined</code>. This hook should not exist because React does not need to certify an array it emptied itself.</p>
+            </article>
+
+            <article class="docs__item" id="useReverseReceipt">
+              <header><span class="tag tag--new">New</span><h3>useReverseReceipt(value)</h3></header>
+              <p>Reverses a string, then puts the result in an object that React was not asked to improve.</p>
+              <h4>Signature</h4>
+              <pre><code>useReverseReceipt(value: string): { readonly reversed: string };</code></pre>
+              <h4>Example</h4>
+              <pre><code>const receipt = useReverseReceipt("dessert");
+// { reversed: "tressed" }</code></pre>
+              <p>A reasonable person would write <code>[...value].reverse().join("")</code>. This hook should not exist because a string reversal does not need React or a receipt.</p>
             </article>
           </div>
         </div>

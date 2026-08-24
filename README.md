@@ -1293,6 +1293,29 @@ wasNothing(); // true
 
 Ce hook n'aurait jamais dû exister, car React n'a pas besoin de certifier le contenu d'un tableau aussitôt vidé.
 
+### `useReverseReceipt(value: string): { readonly reversed: string }`
+
+Inverse une chaîne, puis enferme le résultat dans un objet parce qu'une chaîne seule manquait manifestement de cérémonie.
+
+```ts
+function useReverseReceipt(value: string): {
+  readonly reversed: string;
+};
+```
+
+```tsx
+import { useReverseReceipt } from "greact-hooks";
+
+const receipt = useReverseReceipt("dessert");
+// { reversed: "tressed" }
+```
+
+- **Paramètre :** `value`, la chaîne à inverser pour produire un reçu inutile.
+- **Retour :** un objet contenant la chaîne inversée.
+- **Alternative raisonnable :** écrire directement `[...value].reverse().join("")`.
+
+Ce hook n'aurait jamais dû exister, car React n'améliore pas une inversion de chaîne en la livrant dans un emballage mémorisé.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
