@@ -167,7 +167,8 @@
             <a href="#useLastCharCount">useLastCharCount</a>
             <a href="#useDiscardThenReturn">useDiscardThenReturn</a>
             <a href="#useDiscardConfirmation">useDiscardConfirmation</a>
-            <a href="#useReverseReceipt">useReverseReceipt <span class="tag tag--new">New</span></a>
+            <a href="#useReverseReceipt">useReverseReceipt</a>
+            <a href="#useReverseThenCount">useReverseThenCount <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -798,7 +799,7 @@ wasNothing(); // true</code></pre>
             </article>
 
             <article class="docs__item" id="useReverseReceipt">
-              <header><span class="tag tag--new">New</span><h3>useReverseReceipt(value)</h3></header>
+              <header><span class="tag">String</span><h3>useReverseReceipt(value)</h3></header>
               <p>Reverses a string, then puts the result in an object that React was not asked to improve.</p>
               <h4>Signature</h4>
               <pre><code>useReverseReceipt(value: string): { readonly reversed: string };</code></pre>
@@ -806,6 +807,17 @@ wasNothing(); // true</code></pre>
               <pre><code>const receipt = useReverseReceipt("dessert");
 // { reversed: "tressed" }</code></pre>
               <p>A reasonable person would write <code>[...value].reverse().join("")</code>. This hook should not exist because a string reversal does not need React or a receipt.</p>
+            </article>
+
+            <article class="docs__item" id="useReverseThenCount">
+              <header><span class="tag tag--new">New</span><h3>useReverseThenCount(value)</h3></header>
+              <p>Reverses a string completely, then counts the characters in the discarded reversal.</p>
+              <h4>Signature</h4>
+              <pre><code>useReverseThenCount(value: string): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const length = useReverseThenCount("absurd");
+// 6</code></pre>
+              <p>A reasonable person would write <code>value.length</code>. This hook should not exist because counting a string does not improve after reversing it.</p>
             </article>
           </div>
         </div>

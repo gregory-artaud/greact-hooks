@@ -55,3 +55,4 @@ export * from "./use-last-char-count";
 export * from "./use-discard-then-return";
 export * from "./use-discard-confirmation";
 export * from "./use-reverse-receipt";
+export * from "./use-reverse-then-count";

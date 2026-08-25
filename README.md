@@ -1316,6 +1316,27 @@ const receipt = useReverseReceipt("dessert");
 
 Ce hook n'aurait jamais dû exister, car React n'améliore pas une inversion de chaîne en la livrant dans un emballage mémorisé.
 
+### `useReverseThenCount(value: string): number`
+
+Inverse une chaîne entière avant de retourner sa longueur inchangée.
+
+```ts
+function useReverseThenCount(value: string): number;
+```
+
+```tsx
+import { useReverseThenCount } from "greact-hooks";
+
+const length = useReverseThenCount("absurd");
+// 6
+```
+
+- **Paramètre :** `value`, la chaîne à inverser pour rien.
+- **Retour :** la longueur de la chaîne, après une inversion immédiatement oubliée.
+- **Alternative raisonnable :** écrire directement `value.length`.
+
+Ce hook n'aurait jamais dû exister, car compter une chaîne ne nécessite pas de la renverser ni d'impliquer React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
