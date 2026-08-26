@@ -1337,6 +1337,31 @@ const length = useReverseThenCount("absurd");
 
 Ce hook n'aurait jamais dû exister, car compter une chaîne ne nécessite pas de la renverser ni d'impliquer React.
 
+### `useCallbackNameLength<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => number`
+
+Appelle le callback, jette son résultat, puis retourne le nombre de caractères de son nom.
+
+```ts
+function useCallbackNameLength<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => number;
+```
+
+```tsx
+import { useCallbackNameLength } from "greact-hooks";
+
+const measure = useCallbackNameLength(function namedCallback() {
+  return "discarded";
+});
+measure(); // 13
+```
+
+- **Paramètre :** `callback`, la fonction qui sera exécutée uniquement pour que son résultat soit ignoré.
+- **Retour :** une fonction mémorisée qui renvoie la longueur du nom du callback.
+- **Alternative raisonnable :** écrire directement `callback(...args); return callback.name.length`.
+
+Ce hook n'aurait jamais dû exister, car le nom d'une fonction n'a pas besoin d'un détour par React pour être compté.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

@@ -168,7 +168,8 @@
             <a href="#useDiscardThenReturn">useDiscardThenReturn</a>
             <a href="#useDiscardConfirmation">useDiscardConfirmation</a>
             <a href="#useReverseReceipt">useReverseReceipt</a>
-            <a href="#useReverseThenCount">useReverseThenCount <span class="tag tag--new">New</span></a>
+            <a href="#useReverseThenCount">useReverseThenCount</a>
+            <a href="#useCallbackNameLength">useCallbackNameLength <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -810,7 +811,7 @@ wasNothing(); // true</code></pre>
             </article>
 
             <article class="docs__item" id="useReverseThenCount">
-              <header><span class="tag tag--new">New</span><h3>useReverseThenCount(value)</h3></header>
+              <header><span class="tag">String</span><h3>useReverseThenCount(value)</h3></header>
               <p>Reverses a string completely, then counts the characters in the discarded reversal.</p>
               <h4>Signature</h4>
               <pre><code>useReverseThenCount(value: string): number;</code></pre>
@@ -818,6 +819,21 @@ wasNothing(); // true</code></pre>
               <pre><code>const length = useReverseThenCount("absurd");
 // 6</code></pre>
               <p>A reasonable person would write <code>value.length</code>. This hook should not exist because counting a string does not improve after reversing it.</p>
+            </article>
+
+            <article class="docs__item" id="useCallbackNameLength">
+              <header><span class="tag tag--new">New</span><h3>useCallbackNameLength&lt;Args, Return&gt;(callback)</h3></header>
+              <p>Calls a callback, discards its result, then counts the characters in the callback's name.</p>
+              <h4>Signature</h4>
+              <pre><code>useCallbackNameLength&lt;Args extends unknown[], Return&gt;(
+  callback: (...args: Args) =&gt; Return,
+): (...args: Args) =&gt; number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const measure = useCallbackNameLength(function namedCallback() {
+  return "discarded";
+});
+measure(); // 13</code></pre>
+              <p>A reasonable person would write <code>callback(...args); return callback.name.length</code>. This hook should not exist because counting a function name is not a React concern.</p>
             </article>
           </div>
         </div>
