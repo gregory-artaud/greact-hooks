@@ -57,3 +57,4 @@ export * from "./use-discard-confirmation";
 export * from "./use-reverse-receipt";
 export * from "./use-reverse-then-count";
 export * from "./use-callback-name-length";
+export * from "./use-bind-then-invoke";

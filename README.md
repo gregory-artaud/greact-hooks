@@ -1362,6 +1362,29 @@ measure(); // 13
 
 Ce hook n'aurait jamais dû exister, car le nom d'une fonction n'a pas besoin d'un détour par React pour être compté.
 
+### `useBindThenInvoke<Args extends unknown[], Return>(callback: (...args: Args) => Return): (...args: Args) => Return`
+
+Lie le callback à `undefined`, puis appelle immédiatement la copie liée.
+
+```ts
+function useBindThenInvoke<Args extends unknown[], Return>(
+  callback: (...args: Args) => Return,
+): (...args: Args) => Return;
+```
+
+```tsx
+import { useBindThenInvoke } from "greact-hooks";
+
+const invoke = useBindThenInvoke((value: string) => value.length);
+invoke("unnecessary"); // 11
+```
+
+- **Paramètre :** `callback`, la fonction à transformer en copie liée avant de l'appeler.
+- **Retour :** une fonction mémorisée qui appelle cette copie et renvoie son résultat.
+- **Alternative raisonnable :** écrire directement `(...args) => callback(...args)`.
+
+Ce hook n'aurait jamais dû exister, car lier une fonction à `undefined` avant de l'appeler ne justifie pas React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
