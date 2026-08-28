@@ -170,7 +170,8 @@
             <a href="#useReverseReceipt">useReverseReceipt</a>
             <a href="#useReverseThenCount">useReverseThenCount</a>
             <a href="#useCallbackNameLength">useCallbackNameLength</a>
-            <a href="#useBindThenInvoke">useBindThenInvoke <span class="tag tag--new">New</span></a>
+            <a href="#useBindThenInvoke">useBindThenInvoke</a>
+            <a href="#useAppendThenRestore">useAppendThenRestore <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -838,7 +839,7 @@ measure(); // 13</code></pre>
             </article>
 
             <article class="docs__item" id="useBindThenInvoke">
-              <header><span class="tag tag--new">New</span><h3>useBindThenInvoke&lt;Args, Return&gt;(callback)</h3></header>
+              <header><h3>useBindThenInvoke&lt;Args, Return&gt;(callback)</h3></header>
               <p>Turns a callback into a function bound to <code>undefined</code>, then calls that copy immediately.</p>
               <h4>Signature</h4>
               <pre><code>useBindThenInvoke&lt;Args extends unknown[], Return&gt;(
@@ -848,6 +849,17 @@ measure(); // 13</code></pre>
               <pre><code>const invoke = useBindThenInvoke((value: string) =&gt; value.length);
 invoke("unnecessary"); // 11</code></pre>
               <p>A reasonable person would write <code>(...args) =&gt; callback(...args)</code>. This hook should not exist because binding a function to <code>undefined</code> before calling it is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useAppendThenRestore">
+              <header><span class="tag tag--new">New</span><h3>useAppendThenRestore(value)</h3></header>
+              <p>Adds <code>!</code> to a string, removes it immediately, and displays both steps.</p>
+              <h4>Signature</h4>
+              <pre><code>useAppendThenRestore(value: string): readonly [string, string];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [appended, restored] = useAppendThenRestore("pointless");
+// ["pointless!", "pointless"]</code></pre>
+              <p>A reasonable person would write <code>[`${value}!`, value]</code>. This hook should not exist because adding a character just to remove it is not a React concern.</p>
             </article>
           </div>
         </div>

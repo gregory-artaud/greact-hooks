@@ -1385,6 +1385,27 @@ invoke("unnecessary"); // 11
 
 Ce hook n'aurait jamais dû exister, car lier une fonction à `undefined` avant de l'appeler ne justifie pas React.
 
+### `useAppendThenRestore(value: string): readonly [string, string]`
+
+Ajoute `!` à une chaîne, le retire immédiatement, puis expose les deux étapes.
+
+```ts
+function useAppendThenRestore(value: string): readonly [string, string];
+```
+
+```tsx
+import { useAppendThenRestore } from "greact-hooks";
+
+const [appended, restored] = useAppendThenRestore("pointless");
+// ["pointless!", "pointless"]
+```
+
+- **Paramètre :** `value`, la chaîne à modifier puis à restaurer.
+- **Retour :** un tuple contenant la chaîne avec `!`, puis la chaîne d'origine retrouvée.
+- **Alternative raisonnable :** écrire directement `[`${value}!`, value]`.
+
+Ce hook n'aurait jamais dû exister, car ajouter un caractère pour le retirer aussitôt ne nécessite pas React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
