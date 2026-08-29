@@ -1406,6 +1406,27 @@ const [appended, restored] = useAppendThenRestore("pointless");
 
 Ce hook n'aurait jamais dû exister, car ajouter un caractère pour le retirer aussitôt ne nécessite pas React.
 
+### `useSelfDivision(value: number): number`
+
+Divise un nombre par lui-même pour vérifier une évidence arithmétique.
+
+```ts
+function useSelfDivision(value: number): number;
+```
+
+```tsx
+import { useSelfDivision } from "greact-hooks";
+
+const proof = useSelfDivision(42);
+// 1
+```
+
+- **Paramètre :** `value`, le nombre à confirmer de manière disproportionnée.
+- **Retour :** `value / value` (`NaN` pour `0` et les valeurs infinies).
+- **Alternative raisonnable :** écrire directement `value / value`.
+
+Ce hook n'aurait jamais dû exister, car une division par soi-même ne mérite pas une allocation React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

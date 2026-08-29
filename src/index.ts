@@ -59,3 +59,4 @@ export * from "./use-reverse-then-count";
 export * from "./use-callback-name-length";
 export * from "./use-bind-then-invoke";
 export * from "./use-append-then-restore";
+export * from "./use-self-division";

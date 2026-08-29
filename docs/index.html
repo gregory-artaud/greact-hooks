@@ -171,7 +171,8 @@
             <a href="#useReverseThenCount">useReverseThenCount</a>
             <a href="#useCallbackNameLength">useCallbackNameLength</a>
             <a href="#useBindThenInvoke">useBindThenInvoke</a>
-            <a href="#useAppendThenRestore">useAppendThenRestore <span class="tag tag--new">New</span></a>
+            <a href="#useAppendThenRestore">useAppendThenRestore</a>
+            <a href="#useSelfDivision">useSelfDivision <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -852,7 +853,7 @@ invoke("unnecessary"); // 11</code></pre>
             </article>
 
             <article class="docs__item" id="useAppendThenRestore">
-              <header><span class="tag tag--new">New</span><h3>useAppendThenRestore(value)</h3></header>
+              <header><h3>useAppendThenRestore(value)</h3></header>
               <p>Adds <code>!</code> to a string, removes it immediately, and displays both steps.</p>
               <h4>Signature</h4>
               <pre><code>useAppendThenRestore(value: string): readonly [string, string];</code></pre>
@@ -860,6 +861,17 @@ invoke("unnecessary"); // 11</code></pre>
               <pre><code>const [appended, restored] = useAppendThenRestore("pointless");
 // ["pointless!", "pointless"]</code></pre>
               <p>A reasonable person would write <code>[`${value}!`, value]</code>. This hook should not exist because adding a character just to remove it is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useSelfDivision">
+              <header><span class="tag tag--new">New</span><h3>useSelfDivision(value)</h3></header>
+              <p>Divides a number by itself to certify an arithmetic fact nobody asked React to certify.</p>
+              <h4>Signature</h4>
+              <pre><code>useSelfDivision(value: number): number;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const proof = useSelfDivision(42);
+// 1</code></pre>
+              <p>A reasonable person would write <code>value / value</code>. This hook should not exist because self-division is not a React concern.</p>
             </article>
           </div>
         </div>
