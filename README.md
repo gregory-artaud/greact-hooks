@@ -1427,6 +1427,27 @@ const proof = useSelfDivision(42);
 
 Ce hook n'aurait jamais dû exister, car une division par soi-même ne mérite pas une allocation React.
 
+### `useSignOfSign(value: number): number`
+
+Calcule le signe d'un nombre, puis recalcule le signe de ce signe.
+
+```ts
+function useSignOfSign(value: number): number;
+```
+
+```tsx
+import { useSignOfSign } from "greact-hooks";
+
+const sign = useSignOfSign(-42);
+// -1
+```
+
+- **Paramètre :** `value`, le nombre dont le signe sera inutilement signé deux fois.
+- **Retour :** `Math.sign(Math.sign(value))`, identique à `Math.sign(value)`.
+- **Alternative raisonnable :** écrire directement `Math.sign(value)`.
+
+Ce hook n'aurait jamais dû exister, car signer un signe ne nécessite pas React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
