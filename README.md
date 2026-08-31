@@ -1448,6 +1448,27 @@ const sign = useSignOfSign(-42);
 
 Ce hook n'aurait jamais dû exister, car signer un signe ne nécessite pas React.
 
+### `useCallbackThenObject<T>(value: T): { readonly value: T }`
+
+Crée un callback mémorisé, l'appelle immédiatement, puis range le résultat dans un nouvel objet.
+
+```ts
+function useCallbackThenObject<T>(value: T): { readonly value: T };
+```
+
+```tsx
+import { useCallbackThenObject } from "greact-hooks";
+
+const boxed = useCallbackThenObject("already available");
+// { value: "already available" }
+```
+
+- **Paramètre :** `value`, la valeur à faire transiter par un callback inutile.
+- **Retour :** un nouvel objet contenant cette valeur.
+- **Alternative raisonnable :** écrire directement `{ value }`.
+
+Ce hook n'aurait jamais dû exister, car mémoriser un détour pour fabriquer un emballage frais ne justifie pas React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
