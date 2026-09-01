@@ -1469,6 +1469,26 @@ const boxed = useCallbackThenObject("already available");
 
 Ce hook n'aurait jamais dû exister, car mémoriser un détour pour fabriquer un emballage frais ne justifie pas React.
 
+### `useGrandparentPrototype<T extends object>(value: T): object | null`
+
+Demande le prototype du prototype de `value`, parce qu'un seul détour dans la chaîne de prototypes n'était apparemment pas assez long.
+
+```ts
+function useGrandparentPrototype<T extends object>(value: T): object | null;
+```
+
+```tsx
+import { useGrandparentPrototype } from "greact-hooks";
+
+const prototype = useGrandparentPrototype(Object.create({}));
+```
+
+- **Paramètre :** `value`, l'objet dont le grand-parent sera inutilement recherché.
+- **Retour :** le prototype du prototype de `value`, ou `null` lorsque la chaîne s'arrête.
+- **Alternative raisonnable :** écrire directement `Object.getPrototypeOf(Object.getPrototypeOf(value))` avec un garde-fou pour `null`.
+
+Ce hook n'aurait jamais dû exister, car parcourir deux prototypes ne nécessite ni React ni une abstraction.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

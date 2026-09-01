@@ -62,3 +62,4 @@ export * from "./use-append-then-restore";
 export * from "./use-self-division";
 export * from "./use-sign-of-sign";
 export * from "./use-callback-then-object";
+export * from "./use-grandparent-prototype";

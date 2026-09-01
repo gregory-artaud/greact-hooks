@@ -174,7 +174,8 @@
             <a href="#useAppendThenRestore">useAppendThenRestore</a>
             <a href="#useSelfDivision">useSelfDivision</a>
             <a href="#useSignOfSign">useSignOfSign</a>
-            <a href="#useCallbackThenObject">useCallbackThenObject <span class="tag tag--new">New</span></a>
+            <a href="#useCallbackThenObject">useCallbackThenObject</a>
+            <a href="#useGrandparentPrototype">useGrandparentPrototype <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -888,7 +889,7 @@ invoke("unnecessary"); // 11</code></pre>
             </article>
 
             <article class="docs__item" id="useCallbackThenObject">
-              <header><span class="tag tag--new">New</span><h3>useCallbackThenObject(value)</h3></header>
+              <header><h3>useCallbackThenObject(value)</h3></header>
               <p>Creates a memoized callback, calls it immediately, and puts its unchanged result in a fresh one-property object.</p>
               <h4>Signature</h4>
               <pre><code>useCallbackThenObject&lt;T&gt;(value: T): { readonly value: T };</code></pre>
@@ -896,6 +897,19 @@ invoke("unnecessary"); // 11</code></pre>
               <pre><code>const boxed = useCallbackThenObject("already available");
 // { value: "already available" }</code></pre>
               <p>A reasonable person would write <code>{ value }</code>. This hook should not exist because React does not need to supervise a callback that only returns its input once.</p>
+            </article>
+
+            <article class="docs__item" id="useGrandparentPrototype">
+              <header><span class="tag tag--new">New</span><h3>useGrandparentPrototype&lt;T extends object&gt;(value)</h3></header>
+              <p>Looks up the prototype of an object's prototype, because one trip through the prototype chain was apparently insufficient.</p>
+              <h4>Signature</h4>
+              <pre><code>useGrandparentPrototype&lt;T extends object&gt;(
+  value: T,
+): object | null;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const prototype = useGrandparentPrototype(Object.create({}));
+// Object.prototype</code></pre>
+              <p>A reasonable person would write <code>Object.getPrototypeOf(Object.getPrototypeOf(value))</code> with a <code>null</code> guard. This hook should not exist because React has no reason to supervise two prototype lookups.</p>
             </article>
           </div>
         </div>
