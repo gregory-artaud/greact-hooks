@@ -175,7 +175,8 @@
             <a href="#useSelfDivision">useSelfDivision</a>
             <a href="#useSignOfSign">useSignOfSign</a>
             <a href="#useCallbackThenObject">useCallbackThenObject</a>
-            <a href="#useGrandparentPrototype">useGrandparentPrototype <span class="tag tag--new">New</span></a>
+            <a href="#useGrandparentPrototype">useGrandparentPrototype</a>
+            <a href="#useSortThenReunite">useSortThenReunite <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -900,7 +901,7 @@ invoke("unnecessary"); // 11</code></pre>
             </article>
 
             <article class="docs__item" id="useGrandparentPrototype">
-              <header><span class="tag tag--new">New</span><h3>useGrandparentPrototype&lt;T extends object&gt;(value)</h3></header>
+              <header><h3>useGrandparentPrototype&lt;T extends object&gt;(value)</h3></header>
               <p>Looks up the prototype of an object's prototype, because one trip through the prototype chain was apparently insufficient.</p>
               <h4>Signature</h4>
               <pre><code>useGrandparentPrototype&lt;T extends object&gt;(
@@ -910,6 +911,22 @@ invoke("unnecessary"); // 11</code></pre>
               <pre><code>const prototype = useGrandparentPrototype(Object.create({}));
 // Object.prototype</code></pre>
               <p>A reasonable person would write <code>Object.getPrototypeOf(Object.getPrototypeOf(value))</code> with a <code>null</code> guard. This hook should not exist because React has no reason to supervise two prototype lookups.</p>
+            </article>
+
+            <article class="docs__item" id="useSortThenReunite">
+              <header><span class="tag tag--new">New</span><h3>useSortThenReunite()</h3></header>
+              <p>Copies a pair of numbers, sorts it, removes both numbers, and rebuilds the pair.</p>
+              <h4>Signature</h4>
+              <pre><code>type SortThenReunite = (
+  values: readonly [number, number],
+) =&gt; readonly [number, number];
+
+useSortThenReunite(): SortThenReunite;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const sortThenReunite = useSortThenReunite();
+sortThenReunite([9, 3]);
+// [3, 9]</code></pre>
+              <p>A reasonable person would write <code>[...values].sort((a, b) =&gt; a - b)</code>. This hook should not exist because sorting two numbers after dismantling a copy is not a React concern.</p>
             </article>
           </div>
         </div>

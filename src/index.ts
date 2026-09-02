@@ -63,3 +63,4 @@ export * from "./use-self-division";
 export * from "./use-sign-of-sign";
 export * from "./use-callback-then-object";
 export * from "./use-grandparent-prototype";
+export * from "./use-sort-then-reunite";

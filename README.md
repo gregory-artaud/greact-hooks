@@ -1489,6 +1489,31 @@ const prototype = useGrandparentPrototype(Object.create({}));
 
 Ce hook n'aurait jamais dû exister, car parcourir deux prototypes ne nécessite ni React ni une abstraction.
 
+### `useSortThenReunite(): SortThenReunite`
+
+Retourne une fonction qui copie une paire de nombres, la trie, retire ses deux éléments, puis la reconstruit.
+
+```ts
+type SortThenReunite = (
+  values: readonly [number, number],
+) => readonly [number, number];
+
+function useSortThenReunite(): SortThenReunite;
+```
+
+```tsx
+import { useSortThenReunite } from "greact-hooks";
+
+const sortThenReunite = useSortThenReunite();
+sortThenReunite([9, 3]); // [3, 9]
+```
+
+- **Paramètres :** la fonction retournée reçoit une paire de nombres.
+- **Retour :** une nouvelle paire contenant les mêmes nombres dans l'ordre croissant.
+- **Alternative raisonnable :** écrire directement `[...values].sort((a, b) => a - b)`.
+
+Ce hook n'aurait jamais dû exister, car trier deux nombres après les avoir retirés d'une copie ne nécessite pas React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
