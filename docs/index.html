@@ -176,7 +176,8 @@
             <a href="#useSignOfSign">useSignOfSign</a>
             <a href="#useCallbackThenObject">useCallbackThenObject</a>
             <a href="#useGrandparentPrototype">useGrandparentPrototype</a>
-            <a href="#useSortThenReunite">useSortThenReunite <span class="tag tag--new">New</span></a>
+            <a href="#useSortThenReunite">useSortThenReunite</a>
+            <a href="#useObviousProof">useObviousProof <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -914,7 +915,7 @@ invoke("unnecessary"); // 11</code></pre>
             </article>
 
             <article class="docs__item" id="useSortThenReunite">
-              <header><span class="tag tag--new">New</span><h3>useSortThenReunite()</h3></header>
+              <header><h3>useSortThenReunite()</h3></header>
               <p>Copies a pair of numbers, sorts it, removes both numbers, and rebuilds the pair.</p>
               <h4>Signature</h4>
               <pre><code>type SortThenReunite = (
@@ -927,6 +928,17 @@ useSortThenReunite(): SortThenReunite;</code></pre>
 sortThenReunite([9, 3]);
 // [3, 9]</code></pre>
               <p>A reasonable person would write <code>[...values].sort((a, b) =&gt; a - b)</code>. This hook should not exist because sorting two numbers after dismantling a copy is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useObviousProof">
+              <header><span class="tag tag--new">New</span><h3>useObviousProof&lt;T&gt;(value)</h3></header>
+              <p>Sends a value through a memoized callback solely to prove that it is itself.</p>
+              <h4>Signature</h4>
+              <pre><code>useObviousProof&lt;T&gt;(value: T): readonly [T, boolean];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [value, proof] = useObviousProof("obvious");
+// ["obvious", true]</code></pre>
+              <p>A reasonable person would write <code>[value, true]</code>. This hook should not exist because a value does not need React to be itself.</p>
             </article>
           </div>
         </div>

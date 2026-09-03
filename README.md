@@ -1514,6 +1514,27 @@ sortThenReunite([9, 3]); // [3, 9]
 
 Ce hook n'aurait jamais dû exister, car trier deux nombres après les avoir retirés d'une copie ne nécessite pas React.
 
+### `useObviousProof<T>(value: T): readonly [T, boolean]`
+
+Passe une valeur dans un callback mémorisé uniquement pour confirmer qu'elle est identique à elle-même.
+
+```ts
+function useObviousProof<T>(value: T): readonly [T, boolean];
+```
+
+```tsx
+import { useObviousProof } from "greact-hooks";
+
+const [value, proof] = useObviousProof("obvious");
+// ["obvious", true]
+```
+
+- **Paramètre :** `value`, la valeur à soumettre à cette vérification sans enjeu.
+- **Retour :** un tuple contenant `value`, puis la preuve toujours vraie que `value` est identique à lui-même.
+- **Alternative raisonnable :** écrire directement `[value, true]`.
+
+Ce hook n'aurait jamais dû exister, car une valeur n'a pas besoin de React pour être elle-même.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
