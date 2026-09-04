@@ -65,3 +65,4 @@ export * from "./use-callback-then-object";
 export * from "./use-grandparent-prototype";
 export * from "./use-sort-then-reunite";
 export * from "./use-obvious-proof";
+export * from "./use-empty-remainder";

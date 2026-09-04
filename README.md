@@ -1535,6 +1535,27 @@ const [value, proof] = useObviousProof("obvious");
 
 Ce hook n'aurait jamais dû exister, car une valeur n'a pas besoin de React pour être elle-même.
 
+### `useEmptyRemainder<T>(value: T): readonly [T, readonly []]`
+
+Place `value` dans un tableau, l'en retire aussitôt, puis retourne la valeur restaurée avec le tableau vide qui reste.
+
+```ts
+function useEmptyRemainder<T>(value: T): readonly [T, readonly []];
+```
+
+```tsx
+import { useEmptyRemainder } from "greact-hooks";
+
+const [value, remainder] = useEmptyRemainder("already unpacked");
+// ["already unpacked", []]
+```
+
+- **Paramètre :** `value`, la valeur à emballer puis à retirer.
+- **Retour :** un tuple contenant `value` et le tableau vide abandonné après son retrait.
+- **Alternative raisonnable :** écrire directement `[value, []]`.
+
+Ce hook n'aurait jamais dû exister, car vider un tableau que l'on vient de remplir n'est pas une raison d'impliquer React.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.

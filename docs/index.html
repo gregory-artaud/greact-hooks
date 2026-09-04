@@ -177,7 +177,8 @@
             <a href="#useCallbackThenObject">useCallbackThenObject</a>
             <a href="#useGrandparentPrototype">useGrandparentPrototype</a>
             <a href="#useSortThenReunite">useSortThenReunite</a>
-            <a href="#useObviousProof">useObviousProof <span class="tag tag--new">New</span></a>
+            <a href="#useObviousProof">useObviousProof</a>
+            <a href="#useEmptyRemainder">useEmptyRemainder <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -931,7 +932,7 @@ sortThenReunite([9, 3]);
             </article>
 
             <article class="docs__item" id="useObviousProof">
-              <header><span class="tag tag--new">New</span><h3>useObviousProof&lt;T&gt;(value)</h3></header>
+              <header><h3>useObviousProof&lt;T&gt;(value)</h3></header>
               <p>Sends a value through a memoized callback solely to prove that it is itself.</p>
               <h4>Signature</h4>
               <pre><code>useObviousProof&lt;T&gt;(value: T): readonly [T, boolean];</code></pre>
@@ -939,6 +940,17 @@ sortThenReunite([9, 3]);
               <pre><code>const [value, proof] = useObviousProof("obvious");
 // ["obvious", true]</code></pre>
               <p>A reasonable person would write <code>[value, true]</code>. This hook should not exist because a value does not need React to be itself.</p>
+            </article>
+
+            <article class="docs__item" id="useEmptyRemainder">
+              <header><span class="tag tag--new">New</span><h3>useEmptyRemainder&lt;T&gt;(value)</h3></header>
+              <p>Puts a value in an array, removes it immediately, and returns the value with the empty array left behind.</p>
+              <h4>Signature</h4>
+              <pre><code>useEmptyRemainder&lt;T&gt;(value: T): readonly [T, readonly []];</code></pre>
+              <h4>Example</h4>
+              <pre><code>const [value, remainder] = useEmptyRemainder("already unpacked");
+// ["already unpacked", []]</code></pre>
+              <p>A reasonable person would write <code>[value, []]</code>. This hook should not exist because emptying a just-filled array is not a React concern.</p>
             </article>
           </div>
         </div>
