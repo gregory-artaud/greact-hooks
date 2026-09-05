@@ -178,7 +178,8 @@
             <a href="#useGrandparentPrototype">useGrandparentPrototype</a>
             <a href="#useSortThenReunite">useSortThenReunite</a>
             <a href="#useObviousProof">useObviousProof</a>
-            <a href="#useEmptyRemainder">useEmptyRemainder <span class="tag tag--new">New</span></a>
+            <a href="#useEmptyRemainder">useEmptyRemainder</a>
+            <a href="#useCallbackAndResult">useCallbackAndResult <span class="tag tag--new">New</span></a>
           </nav>
           <div class="docs">
             <article class="docs__item" id="useInterval">
@@ -943,7 +944,7 @@ sortThenReunite([9, 3]);
             </article>
 
             <article class="docs__item" id="useEmptyRemainder">
-              <header><span class="tag tag--new">New</span><h3>useEmptyRemainder&lt;T&gt;(value)</h3></header>
+              <header><h3>useEmptyRemainder&lt;T&gt;(value)</h3></header>
               <p>Puts a value in an array, removes it immediately, and returns the value with the empty array left behind.</p>
               <h4>Signature</h4>
               <pre><code>useEmptyRemainder&lt;T&gt;(value: T): readonly [T, readonly []];</code></pre>
@@ -951,6 +952,21 @@ sortThenReunite([9, 3]);
               <pre><code>const [value, remainder] = useEmptyRemainder("already unpacked");
 // ["already unpacked", []]</code></pre>
               <p>A reasonable person would write <code>[value, []]</code>. This hook should not exist because emptying a just-filled array is not a React concern.</p>
+            </article>
+
+            <article class="docs__item" id="useCallbackAndResult">
+              <header><span class="tag tag--new">New</span><h3>useCallbackAndResult()</h3></header>
+              <p>Runs a callback through a one-item array, removes the result immediately, and returns the result beside the callback that made it.</p>
+              <h4>Signature</h4>
+              <pre><code>type CallbackAndResult = &lt;Return&gt;(
+  callback: () =&gt; Return,
+) =&gt; readonly [Return, () =&gt; Return];
+
+useCallbackAndResult(): CallbackAndResult;</code></pre>
+              <h4>Example</h4>
+              <pre><code>const getResult = useCallbackAndResult();
+const [value, callback] = getResult(() =&gt; "already available");</code></pre>
+              <p>A reasonable person would write <code>[callback(), callback]</code>. This hook should not exist because React has no reason to issue a receipt for a callback it just ran.</p>
             </article>
           </div>
         </div>

@@ -1556,6 +1556,31 @@ const [value, remainder] = useEmptyRemainder("already unpacked");
 
 Ce hook n'aurait jamais dû exister, car vider un tableau que l'on vient de remplir n'est pas une raison d'impliquer React.
 
+### `useCallbackAndResult(): CallbackAndResult`
+
+Exécute un callback dans un tableau à un élément, retire immédiatement le résultat, puis retourne le résultat avec le callback qui l'a produit.
+
+```ts
+type CallbackAndResult = <Return>(
+  callback: () => Return,
+) => readonly [Return, () => Return];
+
+function useCallbackAndResult(): CallbackAndResult;
+```
+
+```tsx
+import { useCallbackAndResult } from "greact-hooks";
+
+const getResult = useCallbackAndResult();
+const [value, callback] = getResult(() => "already available");
+```
+
+- **Paramètre :** la fonction retournée accepte un callback sans argument.
+- **Retour :** un tuple contenant le résultat du callback et le callback original.
+- **Alternative raisonnable :** écrire directement `[callback(), callback]`.
+
+Ce hook n'aurait jamais dû exister, car React n'a aucune raison d'émettre un reçu pour un callback qu'il vient d'exécuter.
+
 ## Roadmap
 - Additional time-based hooks (timeouts, idle timers).
 - Fetching helpers with suspense-first ergonomics.
